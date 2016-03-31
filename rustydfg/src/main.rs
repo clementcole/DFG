@@ -28,7 +28,7 @@ fn main() {
 		for word in line.split(":"){
 			let name = word.trim();
 			let line_locater = &line;
-			print!(" '{}' ", line_locator[0]);
+			print!(" '{}' ", line_locater[0]);
 
 		}
         println!("\n");
