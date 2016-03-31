@@ -1,0 +1,15 @@
+Block count: 127	Block size: 11	Total cycles: 1397
+**************************************************
+ 0x410a70.0  : @malloc_consolidate+784.0         :   ADD_R_I          :  limm   t1d, 0x1                                  
+ 0x410a70.1  : @malloc_consolidate+784.1         :   ADD_R_I          :  add   edx, edx, t1d                              
+ 0x410a73.0  : @malloc_consolidate+787.0         :   MOV_M_R          :  st   rax, DS                                     
+ 0x410a77.0  : @malloc_consolidate+791.0         :   MOV_M_R          :  st   rax, DS                                     
+ 0x410a7b.0  : @malloc_consolidate+795.0         :   ADD_R_I          :  limm   t1, 0x10                                  
+ 0x410a7b.1  : @malloc_consolidate+795.1         :   ADD_R_I          :  add   rax, rax, t1                               
+ 0x410a7f.0  : @malloc_consolidate+799.0         :   CMP_R_I          :  limm   t1d, 0x80                                 
+ 0x410a7f.1  : @malloc_consolidate+799.1         :   CMP_R_I          :  sub   t0d, edx, t1d                              
+ 0x410a85.0  : @malloc_consolidate+805.0         :   JNZ_I            :  rdip   t1, %ctrl153,                             
+ 0x410a85.1  : @malloc_consolidate+805.1         :   JNZ_I            :  limm   t2, 0xffffffffffffffe9                    
+ 0x410a85.2  : @malloc_consolidate+805.2         :   JNZ_I            :  wrip   , t1, t2                                  
+--------------------------------------------------
+--------------------------------------------------

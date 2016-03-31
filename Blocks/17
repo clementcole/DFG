@@ -1,0 +1,13 @@
+Block count: 2	Block size: 10	Total cycles: 20
+**************************************************
+ 0x4192f5.0  : @strlen+69.0                      :   PCMPEQB_XMM_M    :  ldfp   %ufp1, DS                                 
+ 0x4192f5.1  : @strlen+69.1                      :   PCMPEQB_XMM_M    :  ldfp   %ufp2, DS                                 
+ 0x4192f5.2  : @strlen+69.2                      :   PCMPEQB_XMM_M    :  mcmpi2r   %xmm9_low, %xmm9_low, %ufp1            
+ 0x4192f5.3  : @strlen+69.3                      :   PCMPEQB_XMM_M    :  mcmpi2r   %xmm9_high, %xmm9_high, %ufp2          
+ 0x419311.0  : @strlen+97.0                      :   PMOVMSKB_R_XMM   :  limm   ecx, 0                                    
+ 0x419311.1  : @strlen+97.1                      :   PMOVMSKB_R_XMM   :  movsign   cl, cl, %xmm11_low                     
+ 0x419311.2  : @strlen+97.2                      :   PMOVMSKB_R_XMM   :  movsign   cl, cl, %xmm11_high                    
+ 0x419325.0  : @strlen+117.0                     :   OR_R_R           :  or   rdx, rdx, rcx                               
+ 0x41932b.0  : @strlen+123.0                     :   XOR_R_R          :  xor   rcx, rcx, rax                              
+ 0x419332.0  : @strlen+130.0                     :   SAR_R_R          :  sra   rdx, rdx, rcx                              
+--------------------------------------------------

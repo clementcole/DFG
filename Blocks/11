@@ -1,0 +1,79 @@
+Block count: 7	Block size: 75	Total cycles: 525
+**************************************************
+ 0x407450.0  : @getenv.0                         :   PUSH_R           :  st   r15, SS                                     
+ 0x407450.1  : @getenv.1                         :   PUSH_R           :  subi   rsp, rsp, 0x8                             
+ 0x407452.0  : @getenv+2.0                       :   PUSH_R           :  st   r14, SS                                     
+ 0x407452.1  : @getenv+2.1                       :   PUSH_R           :  subi   rsp, rsp, 0x8                             
+ 0x407454.0  : @getenv+4.0                       :   PUSH_R           :  st   r13, SS                                     
+ 0x407454.1  : @getenv+4.1                       :   PUSH_R           :  subi   rsp, rsp, 0x8                             
+ 0x407456.0  : @getenv+6.0                       :   PUSH_R           :  st   r12, SS                                     
+ 0x407456.1  : @getenv+6.1                       :   PUSH_R           :  subi   rsp, rsp, 0x8                             
+ 0x407458.0  : @getenv+8.0                       :   PUSH_R           :  st   rbp, SS                                     
+ 0x407458.1  : @getenv+8.1                       :   PUSH_R           :  subi   rsp, rsp, 0x8                             
+ 0x407459.0  : @getenv+9.0                       :   PUSH_R           :  st   rbx, SS                                     
+ 0x407459.1  : @getenv+9.1                       :   PUSH_R           :  subi   rsp, rsp, 0x8                             
+ 0x40745a.0  : @getenv+10.0                      :   MOV_R_R          :  mov   rbx, rbx, rdi                              
+ 0x40745d.0  : @getenv+13.0                      :   SUB_R_I          :  limm   t1, 0x8                                   
+ 0x40745d.1  : @getenv+13.1                      :   SUB_R_I          :  sub   rsp, rsp, t1                               
+ 0x407461.0  : @getenv+17.0                      :   CALL_NEAR_I      :  limm   t1, 0x11e4a                               
+ 0x407461.1  : @getenv+17.1                      :   CALL_NEAR_I      :  rdip   t7, %ctrl153,                             
+ 0x407461.2  : @getenv+17.2                      :   CALL_NEAR_I      :  st   t7, SS                                      
+ 0x407461.3  : @getenv+17.3                      :   CALL_NEAR_I      :  subi   rsp, rsp, 0x8                             
+ 0x407461.4  : @getenv+17.4                      :   CALL_NEAR_I      :  wrip   , t7, t1                                  
+ 0x407466.0  : @getenv+22.0                      :   MOV_R_P          :  rdip   t7, %ctrl153,                             
+ 0x407466.1  : @getenv+22.1                      :   MOV_R_P          :  ld   rbp, DS                                     
+ 0x40746d.0  : @getenv+29.0                      :   TEST_R_R         :  and   t0, rbp, rbp                               
+ 0x407470.0  : @getenv+32.0                      :   JZ_I             :  rdip   t1, %ctrl153,                             
+ 0x407470.1  : @getenv+32.1                      :   JZ_I             :  limm   t2, 0xb2                                  
+ 0x407470.2  : @getenv+32.2                      :   JZ_I             :  wrip   , t1, t2                                  
+ 0x407476.0  : @getenv+38.0                      :   MOV_R_R          :  mov   r14, r14, rax                              
+ 0x407479.0  : @getenv+41.0                      :   MOVZX_B_R_M      :  ld   t1b, DS                                     
+ 0x407479.1  : @getenv+41.1                      :   MOVZX_B_R_M      :  zexti   eax, t1d, 0x7                            
+ 0x40747c.0  : @getenv+44.0                      :   TEST_R_R         :  and   t0b, al, al                                
+ 0x40747e.0  : @getenv+46.0                      :   JZ_I             :  rdip   t1, %ctrl153,                             
+ 0x40747e.1  : @getenv+46.1                      :   JZ_I             :  limm   t2, 0xa4                                  
+ 0x40747e.2  : @getenv+46.2                      :   JZ_I             :  wrip   , t1, t2                                  
+ 0x407484.0  : @getenv+52.0                      :   CMP_M_I          :  limm   t2b, 0                                    
+ 0x407484.1  : @getenv+52.1                      :   CMP_M_I          :  ld   t1b, DS                                     
+ 0x407484.2  : @getenv+52.2                      :   CMP_M_I          :  sub   t0b, t1b, t2b                              
+ 0x407488.0  : @getenv+56.0                      :   JNZ_I            :  rdip   t1, %ctrl153,                             
+ 0x407488.1  : @getenv+56.1                      :   JNZ_I            :  limm   t2, 0x46                                  
+ 0x407488.2  : @getenv+56.2                      :   JNZ_I            :  wrip   , t1, t2                                  
+ 0x4074b6.0  : @getenv+102.0                     :   ADD_R_I          :  limm   t1, 0x8                                   
+ 0x4074b6.1  : @getenv+102.1                     :   ADD_R_I          :  add   rsp, rsp, t1                               
+ 0x4074ba.0  : @getenv+106.0                     :   MOV_R_R          :  mov   rax, rax, rbx                              
+ 0x4074bd.0  : @getenv+109.0                     :   POP_R            :  ld   t1, SS                                      
+ 0x4074bd.1  : @getenv+109.1                     :   POP_R            :  addi   rsp, rsp, 0x8                             
+ 0x4074bd.2  : @getenv+109.2                     :   POP_R            :  mov   rbx, rbx, t1                               
+ 0x4074be.0  : @getenv+110.0                     :   POP_R            :  ld   t1, SS                                      
+ 0x4074be.1  : @getenv+110.1                     :   POP_R            :  addi   rsp, rsp, 0x8                             
+ 0x4074be.2  : @getenv+110.2                     :   POP_R            :  mov   rbp, rbp, t1                               
+ 0x4074bf.0  : @getenv+111.0                     :   POP_R            :  ld   t1, SS                                      
+ 0x4074bf.1  : @getenv+111.1                     :   POP_R            :  addi   rsp, rsp, 0x8                             
+ 0x4074bf.2  : @getenv+111.2                     :   POP_R            :  mov   r12, r12, t1                               
+ 0x4074c1.0  : @getenv+113.0                     :   POP_R            :  ld   t1, SS                                      
+ 0x4074c1.1  : @getenv+113.1                     :   POP_R            :  addi   rsp, rsp, 0x8                             
+ 0x4074c1.2  : @getenv+113.2                     :   POP_R            :  mov   r13, r13, t1                               
+ 0x4074c3.0  : @getenv+115.0                     :   POP_R            :  ld   t1, SS                                      
+ 0x4074c3.1  : @getenv+115.1                     :   POP_R            :  addi   rsp, rsp, 0x8                             
+ 0x4074c3.2  : @getenv+115.2                     :   POP_R            :  mov   r14, r14, t1                               
+ 0x4074c5.0  : @getenv+117.0                     :   POP_R            :  ld   t1, SS                                      
+ 0x4074c5.1  : @getenv+117.1                     :   POP_R            :  addi   rsp, rsp, 0x8                             
+ 0x4074c5.2  : @getenv+117.2                     :   POP_R            :  mov   r15, r15, t1                               
+ 0x4074c7.0  : @getenv+119.0                     :   RET_NEAR         :  ld   t1, SS                                      
+ 0x4074c7.1  : @getenv+119.1                     :   RET_NEAR         :  addi   rsp, rsp, 0x8                             
+ 0x4074c7.2  : @getenv+119.2                     :   RET_NEAR         :  wripi   , t1, 0                                  
+ 0x4074d0.0  : @getenv+128.0                     :   MOVZX_W_R_M      :  ld   t1w, DS                                     
+ 0x4074d0.1  : @getenv+128.1                     :   MOVZX_W_R_M      :  zexti   r12d, t1d, 0xf                           
+ 0x4074d4.0  : @getenv+132.0                     :   LEA_R_M          :  lea   r15, DS                                    
+ 0x4074d8.0  : @getenv+136.0                     :   MOV_R_M          :  ld   rbx, DS                                     
+ 0x4074dc.0  : @getenv+140.0                     :   LEA_R_M          :  lea   r13, DS                                    
+ 0x4074e0.0  : @getenv+144.0                     :   TEST_R_R         :  and   t0, rbx, rbx                               
+ 0x4074e3.0  : @getenv+147.0                     :   JNZ_I            :  rdip   t1, %ctrl153,                             
+ 0x4074e3.1  : @getenv+147.1                     :   JNZ_I            :  limm   t2, 0x18                                  
+ 0x4074e3.2  : @getenv+147.2                     :   JNZ_I            :  wrip   , t1, t2                                  
+ 0x4074e5.0  : @getenv+149.0                     :   JMP_I            :  rdip   t1, %ctrl153,                             
+ 0x4074e5.1  : @getenv+149.1                     :   JMP_I            :  limm   t2, 0xffffffffffffffcf                    
+ 0x4074e5.2  : @getenv+149.2                     :   JMP_I            :  wrip   , t1, t2                                  
+--------------------------------------------------
+--------------------------------------------------

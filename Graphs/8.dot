@@ -1,0 +1,33 @@
+digraph test{
+	size = "4,4";
+"%xmm8_low1051" [label = "%xmm8_low", shape = "circle"];
+"%xmm8_low1051" -> "DS1051";
+"0x401059" [label = "0x40", shape = "circle"];
+"t11059" [label = "t1", shape = "point"];
+"0x401059" -> "t11059" ["dir" = "none"];
+"add1060" [label = "add", shape = "box"];
+"rcx1060" [label = "rcx", shape = "point"];
+"rcx1060" [label = "rcx", shape = "circle"];
+"rcx1060" -> "add1060";
+"t11059" -> "add1060";
+"rcx1060" [label = "rcx", shape = "circle"];
+"add1060" -> "rcx1060";
+"sub1061" [label = "sub", shape = "box"];
+"t01061" [label = "t0", shape = "point"];
+"rdx1061" [label = "rdx", shape = "circle"];
+"rdx1061" -> "sub1061";
+"rcx1060" -> "sub1061";
+"t01061" [label = "t0", shape = "point"];
+"sub1061" -> "t01061"["dir" = "none"];
+"t11062" [label = "t1", shape = "point"];
+"%ctrl1531062" [label = "%ctrl153", shape = "circle"];
+"%ctrl1531062" -> "t11062"["dir" = "none"];
+"0xffffffffffffffe01063" [label = "0xffffffffffffffe0", shape = "circle"];
+"t21063" [label = "t2", shape = "point"];
+"0xffffffffffffffe01063" -> "t21063" ["dir" = "none"];
+"add1064" [label = "+", shape = "box"];
+"rip1064" [label = "rip", shape = "circle", color = "red"];
+"t11062" -> "add1064"; 
+"t21063" -> "add1064"; 
+"add1064" -> "rip1064";
+}

@@ -1,0 +1,18 @@
+Block count: 17	Block size: 14	Total cycles: 238
+**************************************************
+ 0x41c200.0  : @memset+160.0                     :   MOVDQA_M_XMM     :  stfp   %xmm8_low, DS                             
+ 0x41c200.1  : @memset+160.1                     :   MOVDQA_M_XMM     :  stfp   %xmm8_high, DS                            
+ 0x41c205.0  : @memset+165.0                     :   MOVDQA_M_XMM     :  stfp   %xmm8_low, DS                             
+ 0x41c205.1  : @memset+165.1                     :   MOVDQA_M_XMM     :  stfp   %xmm8_high, DS                            
+ 0x41c20b.0  : @memset+171.0                     :   MOVDQA_M_XMM     :  stfp   %xmm8_low, DS                             
+ 0x41c20b.1  : @memset+171.1                     :   MOVDQA_M_XMM     :  stfp   %xmm8_high, DS                            
+ 0x41c211.0  : @memset+177.0                     :   MOVDQA_M_XMM     :  stfp   %xmm8_low, DS                             
+ 0x41c211.1  : @memset+177.1                     :   MOVDQA_M_XMM     :  stfp   %xmm8_high, DS                            
+ 0x41c217.0  : @memset+183.0                     :   ADD_R_I          :  limm   t1, 0x40                                  
+ 0x41c217.1  : @memset+183.1                     :   ADD_R_I          :  add   rcx, rcx, t1                               
+ 0x41c21b.0  : @memset+187.0                     :   CMP_R_R          :  sub   t0, rdx, rcx                               
+ 0x41c21e.0  : @memset+190.0                     :   JNZ_I            :  rdip   t1, %ctrl153,                             
+ 0x41c21e.1  : @memset+190.1                     :   JNZ_I            :  limm   t2, 0xffffffffffffffe0                    
+ 0x41c21e.2  : @memset+190.2                     :   JNZ_I            :  wrip   , t1, t2                                  
+--------------------------------------------------
+--------------------------------------------------

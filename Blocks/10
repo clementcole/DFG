@@ -1,0 +1,39 @@
+Block count: 8	Block size: 35	Total cycles: 280
+**************************************************
+ 0x4192b0.0  : @strlen.0                         :   PXOR_XMM_XMM     :  mxor   %xmm8_low, %xmm8_low, %xmm8_low           
+ 0x4192b0.1  : @strlen.1                         :   PXOR_XMM_XMM     :  mxor   %xmm8_high, %xmm8_high, %xmm8_high        
+ 0x4192b5.0  : @strlen+5.0                       :   PXOR_XMM_XMM     :  mxor   %xmm9_low, %xmm9_low, %xmm9_low           
+ 0x4192b5.1  : @strlen+5.1                       :   PXOR_XMM_XMM     :  mxor   %xmm9_high, %xmm9_high, %xmm9_high        
+ 0x4192ba.0  : @strlen+10.0                      :   PXOR_XMM_XMM     :  mxor   %xmm10_low, %xmm10_low, %xmm10_low        
+ 0x4192ba.1  : @strlen+10.1                      :   PXOR_XMM_XMM     :  mxor   %xmm10_high, %xmm10_high, %xmm10_high     
+ 0x4192bf.0  : @strlen+15.0                      :   PXOR_XMM_XMM     :  mxor   %xmm11_low, %xmm11_low, %xmm11_low        
+ 0x4192bf.1  : @strlen+15.1                      :   PXOR_XMM_XMM     :  mxor   %xmm11_high, %xmm11_high, %xmm11_high     
+ 0x4192c4.0  : @strlen+20.0                      :   MOV_R_R          :  mov   rax, rax, rdi                              
+ 0x4192c7.0  : @strlen+23.0                      :   MOV_R_R          :  mov   rcx, rcx, rdi                              
+ 0x4192ca.0  : @strlen+26.0                      :   AND_R_I          :  limm   t1, 0xfff                                 
+ 0x4192ca.1  : @strlen+26.1                      :   AND_R_I          :  and   rcx, rcx, t1                               
+ 0x4192d1.0  : @strlen+33.0                      :   CMP_R_I          :  limm   t1, 0xfcf                                 
+ 0x4192d1.1  : @strlen+33.1                      :   CMP_R_I          :  sub   t0, rcx, t1                                
+ 0x4192d8.0  : @strlen+40.0                      :   JNBE_I           :  rdip   t1, %ctrl153,                             
+ 0x4192d8.1  : @strlen+40.1                      :   JNBE_I           :  limm   t2, 0x66                                  
+ 0x4192d8.2  : @strlen+40.2                      :   JNBE_I           :  wrip   , t1, t2                                  
+ 0x4192da.0  : @strlen+42.0                      :   MOVDQU_XMM_M     :  ldfp   %xmm12_low, DS                            
+ 0x4192da.1  : @strlen+42.1                      :   MOVDQU_XMM_M     :  ldfp   %xmm12_high, DS                           
+ 0x4192df.0  : @strlen+47.0                      :   PCMPEQB_XMM_XMM  :  mcmpi2r   %xmm12_low, %xmm12_low, %xmm8_low      
+ 0x4192df.1  : @strlen+47.1                      :   PCMPEQB_XMM_XMM  :  mcmpi2r   %xmm12_high, %xmm12_high, %xmm8_high   
+ 0x4192e4.0  : @strlen+52.0                      :   PMOVMSKB_R_XMM   :  limm   edx, 0                                    
+ 0x4192e4.1  : @strlen+52.1                      :   PMOVMSKB_R_XMM   :  movsign   dl, dl, %xmm12_low                     
+ 0x4192e4.2  : @strlen+52.2                      :   PMOVMSKB_R_XMM   :  movsign   dl, dl, %xmm12_high                    
+ 0x4192e9.0  : @strlen+57.0                      :   TEST_R_R         :  and   t0d, edx, edx                              
+ 0x4192eb.0  : @strlen+59.0                      :   JZ_I             :  rdip   t1, %ctrl153,                             
+ 0x4192eb.1  : @strlen+59.1                      :   JZ_I             :  limm   t2, 0x4                                   
+ 0x4192eb.2  : @strlen+59.2                      :   JZ_I             :  wrip   , t1, t2                                  
+ 0x401258.0  : @__libc_start_main+200.0          :   CMP_M_I          :  limm   t2d, 0x25                                 
+ 0x401258.1  : @__libc_start_main+200.1          :   CMP_M_I          :  ld   t1d, DS                                     
+ 0x401258.2  : @__libc_start_main+200.2          :   CMP_M_I          :  sub   t0d, t1d, t2d                              
+ 0x40125c.0  : @__libc_start_main+204.0          :   MOV_R_M          :  ld   rbp, DS                                     
+ 0x40125f.0  : @__libc_start_main+207.0          :   JNZ_I            :  rdip   t1, %ctrl153,                             
+ 0x40125f.1  : @__libc_start_main+207.1          :   JNZ_I            :  limm   t2, 0x1b2                                 
+ 0x40125f.2  : @__libc_start_main+207.2          :   JNZ_I            :  wrip   , t1, t2                                  
+--------------------------------------------------
+--------------------------------------------------

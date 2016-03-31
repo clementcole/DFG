@@ -1,0 +1,37 @@
+Block count: 6	Block size: 33	Total cycles: 198
+**************************************************
+ 0x4192ed.0  : @strlen+61.0                      :   BSF_R_R          :  mov   t1, t1, t0                                 
+ 0x4192ed.1  : @strlen+61.1                      :   BSF_R_R          :  and   t1d, edx, edx                              
+ 0x4192ed.2  : @strlen+61.2                      :   BSF_R_R          :  br   0x1d                                        
+ 0x4192ed.3  : @strlen+61.3                      :   BSF_R_R          :  movi   eax, eax, 0                               
+ 0x4192ed.4  : @strlen+61.4                      :   BSF_R_R          :  subi   t2d, t1d, 0x1                             
+ 0x4192ed.5  : @strlen+61.5                      :   BSF_R_R          :  xor   t1d, t2d, t1d                              
+ 0x4192ed.6  : @strlen+61.6                      :   BSF_R_R          :  srli   t3, t1, 0x20                              
+ 0x4192ed.7  : @strlen+61.7                      :   BSF_R_R          :  ori   t4d, eax, 0x20                             
+ 0x4192ed.8  : @strlen+61.8                      :   BSF_R_R          :  mov   eax, eax, t4d                              
+ 0x4192ed.9  : @strlen+61.9                      :   BSF_R_R          :  mov   t1d, t1d, t3d                              
+ 0x4192ed.10 : @strlen+61.10                     :   BSF_R_R          :  srli   t3, t1, 0x10                              
+ 0x4192ed.11 : @strlen+61.11                     :   BSF_R_R          :  ori   t4d, eax, 0x10                             
+ 0x4192ed.12 : @strlen+61.12                     :   BSF_R_R          :  mov   eax, eax, t4d                              
+ 0x4192ed.13 : @strlen+61.13                     :   BSF_R_R          :  mov   t1d, t1d, t3d                              
+ 0x4192ed.14 : @strlen+61.14                     :   BSF_R_R          :  srli   t3, t1, 0x8                               
+ 0x4192ed.15 : @strlen+61.15                     :   BSF_R_R          :  ori   t4d, eax, 0x8                              
+ 0x4192ed.16 : @strlen+61.16                     :   BSF_R_R          :  mov   eax, eax, t4d                              
+ 0x4192ed.17 : @strlen+61.17                     :   BSF_R_R          :  mov   t1d, t1d, t3d                              
+ 0x4192ed.18 : @strlen+61.18                     :   BSF_R_R          :  srli   t3, t1, 0x4                               
+ 0x4192ed.19 : @strlen+61.19                     :   BSF_R_R          :  ori   t4d, eax, 0x4                              
+ 0x4192ed.20 : @strlen+61.20                     :   BSF_R_R          :  mov   eax, eax, t4d                              
+ 0x4192ed.21 : @strlen+61.21                     :   BSF_R_R          :  mov   t1d, t1d, t3d                              
+ 0x4192ed.22 : @strlen+61.22                     :   BSF_R_R          :  srli   t3, t1, 0x2                               
+ 0x4192ed.23 : @strlen+61.23                     :   BSF_R_R          :  ori   t4d, eax, 0x2                              
+ 0x4192ed.24 : @strlen+61.24                     :   BSF_R_R          :  mov   eax, eax, t4d                              
+ 0x4192ed.25 : @strlen+61.25                     :   BSF_R_R          :  mov   t1d, t1d, t3d                              
+ 0x4192ed.26 : @strlen+61.26                     :   BSF_R_R          :  srli   t3, t1, 0x1                               
+ 0x4192ed.27 : @strlen+61.27                     :   BSF_R_R          :  ori   t4d, eax, 0x1                              
+ 0x4192ed.28 : @strlen+61.28                     :   BSF_R_R          :  mov   eax, eax, t4d                              
+ 0x4192ed.29 : @strlen+61.29                     :   BSF_R_R          :  fault   No Fault                                 
+ 0x4192f0.0  : @strlen+64.0                      :   RET_NEAR         :  ld   t1, SS                                      
+ 0x4192f0.1  : @strlen+64.1                      :   RET_NEAR         :  addi   rsp, rsp, 0x8                             
+ 0x4192f0.2  : @strlen+64.2                      :   RET_NEAR         :  wripi   , t1, 0                                  
+--------------------------------------------------
+--------------------------------------------------

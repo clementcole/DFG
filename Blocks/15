@@ -1,0 +1,183 @@
+Block count: 3	Block size: 179	Total cycles: 537
+**************************************************
+ 0x412894.0  : @_int_malloc+1364.0               :   MOV_R_R          :  mov   edx, edx, eax                              
+ 0x412896.0  : @_int_malloc+1366.0               :   MOV_R_M          :  ld   esi, DS                                     
+ 0x41289d.0  : @_int_malloc+1373.0               :   TEST_R_R         :  and   t0d, esi, esi                              
+ 0x41289f.0  : @_int_malloc+1375.0               :   JNZ_I            :  rdip   t1, %ctrl153,                             
+ 0x41289f.1  : @_int_malloc+1375.1               :   JNZ_I            :  limm   t2, 0x22a                                 
+ 0x41289f.2  : @_int_malloc+1375.2               :   JNZ_I            :  wrip   , t1, t2                                  
+ 0x4128a5.0  : @_int_malloc+1381.0               :   LEA_R_M          :  lea   eax, DS                                    
+ 0x4128a8.0  : @_int_malloc+1384.0               :   CMP_R_I          :  limm   t1d, 0x4                                  
+ 0x4128a8.1  : @_int_malloc+1384.1               :   CMP_R_I          :  sub   t0d, eax, t1d                              
+ 0x4128ab.0  : @_int_malloc+1387.0               :   JZ_I             :  rdip   t1, %ctrl153,                             
+ 0x4128ab.1  : @_int_malloc+1387.1               :   JZ_I             :  limm   t2, 0x23                                  
+ 0x4128ab.2  : @_int_malloc+1387.2               :   JZ_I             :  wrip   , t1, t2                                  
+ 0x4128ad.0  : @_int_malloc+1389.0               :   MOV_R_R          :  mov   edx, edx, eax                              
+ 0x4128af.0  : @_int_malloc+1391.0               :   MOV_R_M          :  ld   esi, DS                                     
+ 0x4128b6.0  : @_int_malloc+1398.0               :   TEST_R_R         :  and   t0d, esi, esi                              
+ 0x4128b8.0  : @_int_malloc+1400.0               :   JNZ_I            :  rdip   t1, %ctrl153,                             
+ 0x4128b8.1  : @_int_malloc+1400.1               :   JNZ_I            :  limm   t2, 0x211                                 
+ 0x4128b8.2  : @_int_malloc+1400.2               :   JNZ_I            :  wrip   , t1, t2                                  
+ 0x4128be.0  : @_int_malloc+1406.0               :   TEST_R_R         :  and   t0d, edi, edi                              
+ 0x4128c0.0  : @_int_malloc+1408.0               :   JZ_I             :  rdip   t1, %ctrl153,                             
+ 0x4128c0.1  : @_int_malloc+1408.1               :   JZ_I             :  limm   t2, 0xe                                   
+ 0x4128c0.2  : @_int_malloc+1408.2               :   JZ_I             :  wrip   , t1, t2                                  
+ 0x438468.0  : @_dl_discover_osversion+40.0      :   MOVSX_B_R_M      :  ld   t1b, DS                                     
+ 0x438468.1  : @_dl_discover_osversion+40.1      :   MOVSX_B_R_M      :  sexti   esi, t1d, 0x7                            
+ 0x43846b.0  : @_dl_discover_osversion+43.0      :   LEA_R_M          :  lea   edx, DS                                    
+ 0x43846e.0  : @_dl_discover_osversion+46.0      :   CMP_R_I          :  limm   t1b, 0x9                                  
+ 0x43846e.1  : @_dl_discover_osversion+46.1      :   CMP_R_I          :  sub   t0b, dl, t1b                               
+ 0x438471.0  : @_dl_discover_osversion+49.0      :   JNBE_I           :  rdip   t1, %ctrl153,                             
+ 0x438471.1  : @_dl_discover_osversion+49.1      :   JNBE_I           :  limm   t2, 0x5c                                  
+ 0x438471.2  : @_dl_discover_osversion+49.2      :   JNBE_I           :  wrip   , t1, t2                                  
+ 0x438473.0  : @_dl_discover_osversion+51.0      :   MOVSX_B_R_M      :  ld   t1b, DS                                     
+ 0x438473.1  : @_dl_discover_osversion+51.1      :   MOVSX_B_R_M      :  sexti   edx, t1d, 0x7                            
+ 0x438477.0  : @_dl_discover_osversion+55.0      :   LEA_R_M          :  lea   rcx, DS                                    
+ 0x43847b.0  : @_dl_discover_osversion+59.0      :   SUB_R_I          :  limm   t1d, 0x30                                 
+ 0x43847b.1  : @_dl_discover_osversion+59.1      :   SUB_R_I          :  sub   esi, esi, t1d                              
+ 0x43847e.0  : @_dl_discover_osversion+62.0      :   LEA_R_M          :  lea   edi, DS                                    
+ 0x438481.0  : @_dl_discover_osversion+65.0      :   CMP_R_I          :  limm   t1b, 0x9                                  
+ 0x438481.1  : @_dl_discover_osversion+65.1      :   CMP_R_I          :  sub   t0b, dil, t1b                              
+ 0x438485.0  : @_dl_discover_osversion+69.0      :   JNBE_I           :  rdip   t1, %ctrl153,                             
+ 0x438485.1  : @_dl_discover_osversion+69.1      :   JNBE_I           :  limm   t2, 0x20                                  
+ 0x438485.2  : @_dl_discover_osversion+69.2      :   JNBE_I           :  wrip   , t1, t2                                  
+ 0x4384a7.0  : @_dl_discover_osversion+103.0     :   SAL_R_I          :  slli   eax, eax, 0x8                             
+ 0x4384aa.0  : @_dl_discover_osversion+106.0     :   ADD_R_I          :  limm   t1d, 0x1                                  
+ 0x4384aa.1  : @_dl_discover_osversion+106.1     :   ADD_R_I          :  add   r8d, r8d, t1d                              
+ 0x4384ae.0  : @_dl_discover_osversion+110.0     :   LEA_R_M          :  lea   rdi, DS                                    
+ 0x4384b2.0  : @_dl_discover_osversion+114.0     :   OR_R_R           :  or   eax, eax, esi                               
+ 0x4384b4.0  : @_dl_discover_osversion+116.0     :   CMP_R_I          :  limm   t1b, 0x2e                                 
+ 0x4384b4.1  : @_dl_discover_osversion+116.1     :   CMP_R_I          :  sub   t0b, dl, t1b                               
+ 0x4384b7.0  : @_dl_discover_osversion+119.0     :   JNZ_I            :  rdip   t1, %ctrl153,                             
+ 0x4384b7.1  : @_dl_discover_osversion+119.1     :   JNZ_I            :  limm   t2, 0x10                                  
+ 0x4384b7.2  : @_dl_discover_osversion+119.2     :   JNZ_I            :  wrip   , t1, t2                                  
+ 0x46200f.0  : @_dl_init_paths+303.0             :   MOV_R_M          :  ld   rdx, DS                                     
+ 0x462017.0  : @_dl_init_paths+311.0             :   MOV_R_M          :  ld   rcx, DS                                     
+ 0x46201b.0  : @_dl_init_paths+315.0             :   LEA_R_M          :  lea   rax, DS                                    
+ 0x46201f.0  : @_dl_init_paths+319.0             :   MOV_M_R          :  st   rbx, DS                                     
+ 0x462022.0  : @_dl_init_paths+322.0             :   MOV_M_R          :  st   rbx, DS                                     
+ 0x462025.0  : @_dl_init_paths+325.0             :   MOV_M_I          :  limm   t1, 0x4a982c                              
+ 0x462025.1  : @_dl_init_paths+325.1             :   MOV_M_I          :  st   t1, DS                                      
+ 0x46202d.0  : @_dl_init_paths+333.0             :   MOV_M_I          :  limm   t1, 0                                     
+ 0x46202d.1  : @_dl_init_paths+333.1             :   MOV_M_I          :  st   t1, DS                                      
+ 0x462035.0  : @_dl_init_paths+341.0             :   MOV_M_R          :  st   rdx, DS                                     
+ 0x462039.0  : @_dl_init_paths+345.0             :   MOV_M_R          :  st   r9, DS                                      
+ 0x46203d.0  : @_dl_init_paths+349.0             :   ADD_R_R          :  add   r15, r15, rcx                              
+ 0x462040.0  : @_dl_init_paths+352.0             :   ADD_R_R          :  add   rbx, rbx, rcx                              
+ 0x462043.0  : @_dl_init_paths+355.0             :   CMP_M_I          :  limm   t2b, 0x2f                                 
+ 0x462043.1  : @_dl_init_paths+355.1             :   CMP_M_I          :  ld   t1b, DS                                     
+ 0x462043.2  : @_dl_init_paths+355.2             :   CMP_M_I          :  sub   t0b, t1b, t2b                              
+ 0x462047.0  : @_dl_init_paths+359.0             :   LEA_R_M          :  lea   rdx, DS                                    
+ 0x46204c.0  : @_dl_init_paths+364.0             :   JNZ_I            :  rdip   t1, %ctrl153,                             
+ 0x46204c.1  : @_dl_init_paths+364.1             :   JNZ_I            :  limm   t2, 0x19f                                 
+ 0x46204c.2  : @_dl_init_paths+364.2             :   JNZ_I            :  wrip   , t1, t2                                  
+ 0x462052.0  : @_dl_init_paths+370.0             :   MOV_R_R          :  mov   r13, r13, r10                              
+ 0x462055.0  : @_dl_init_paths+373.0             :   MOV_R_R          :  mov   r9, r9, rdx                                
+ 0x462058.0  : @_dl_init_paths+376.0             :   MOV_R_R          :  mov   r10, r10, rax                              
+ 0x46205b.0  : @_dl_init_paths+379.0             :   JMP_I            :  rdip   t1, %ctrl153,                             
+ 0x46205b.1  : @_dl_init_paths+379.1             :   JMP_I            :  limm   t2, 0xffffffffffffff85                    
+ 0x46205b.2  : @_dl_init_paths+379.2             :   JMP_I            :  wrip   , t1, t2                                  
+ 0x40c9a6.0  : @_IO_cleanup+102.0                :   MOV_R_M          :  ld   edx, DS                                     
+ 0x40c9ac.0  : @_IO_cleanup+108.0                :   MOV_P_R          :  rdip   t7, %ctrl153,                             
+ 0x40c9ac.1  : @_IO_cleanup+108.1                :   MOV_P_R          :  st   rbx, DS                                     
+ 0x40c9b3.0  : @_IO_cleanup+115.0                :   TEST_R_R         :  and   t0d, edx, edx                              
+ 0x40c9b5.0  : @_IO_cleanup+117.0                :   JLE_I            :  rdip   t1, %ctrl153,                             
+ 0x40c9b5.1  : @_IO_cleanup+117.1                :   JLE_I            :  limm   t2, 0x11d                                 
+ 0x40c9b5.2  : @_IO_cleanup+117.2                :   JLE_I            :  wrip   , t1, t2                                  
+ 0x40c9cc.0  : @_IO_cleanup+140.0                :   MOV_P_I          :  rdip   t7, %ctrl153,                             
+ 0x40c9cc.1  : @_IO_cleanup+140.1                :   MOV_P_I          :  limm   t1, 0                                     
+ 0x40c9cc.2  : @_IO_cleanup+140.2                :   MOV_P_I          :  st   t1, DS                                      
+ 0x40c9d7.0  : @_IO_cleanup+151.0                :   MOV_R_R          :  mov   edx, edx, ebp                              
+ 0x40c9d9.0  : @_IO_cleanup+153.0                :   MOV_R_M          :  ld   rbx, DS                                     
+ 0x40c9dd.0  : @_IO_cleanup+157.0                :   MOV_R_R          :  mov   ebp, ebp, edx                              
+ 0x40c9df.0  : @_IO_cleanup+159.0                :   TEST_R_R         :  and   t0, rbx, rbx                               
+ 0x40c9e2.0  : @_IO_cleanup+162.0                :   JNZ_I            :  rdip   t1, %ctrl153,                             
+ 0x40c9e2.1  : @_IO_cleanup+162.1                :   JNZ_I            :  limm   t2, 0xffffffffffffffc2                    
+ 0x40c9e2.2  : @_IO_cleanup+162.2                :   JNZ_I            :  wrip   , t1, t2                                  
+ 0x40ca00.0  : @_IO_cleanup+192.0                :   MOV_R_M          :  ld   edx, DS                                     
+ 0x40ca02.0  : @_IO_cleanup+194.0                :   TEST_R_I         :  limm   t1b, 0x2                                  
+ 0x40ca02.1  : @_IO_cleanup+194.1                :   TEST_R_I         :  and   t0b, dl, t1b                               
+ 0x40ca05.0  : @_IO_cleanup+197.0                :   JNZ_I            :  rdip   t1, %ctrl153,                             
+ 0x40ca05.1  : @_IO_cleanup+197.1                :   JNZ_I            :  limm   t2, 0xa5                                  
+ 0x40ca05.2  : @_IO_cleanup+197.2                :   JNZ_I            :  wrip   , t1, t2                                  
+ 0x40cab0.0  : @_IO_cleanup+368.0                :   MOV_M_I          :  limm   t1d, 0xffffffffffffffff                   
+ 0x40cab0.1  : @_IO_cleanup+368.1                :   MOV_M_I          :  st   t1d, DS                                     
+ 0x40caba.0  : @_IO_cleanup+378.0                :   MOV_R_M          :  ld   rbx, DS                                     
+ 0x40cabe.0  : @_IO_cleanup+382.0                :   TEST_R_R         :  and   t0, rbx, rbx                               
+ 0x40cac1.0  : @_IO_cleanup+385.0                :   JNZ_I            :  rdip   t1, %ctrl153,                             
+ 0x40cac1.1  : @_IO_cleanup+385.1                :   JNZ_I            :  limm   t2, 0xffffffffffffff39                    
+ 0x40cac1.2  : @_IO_cleanup+385.2                :   JNZ_I            :  wrip   , t1, t2                                  
+ 0x40cad8.0  : @_IO_cleanup+408.0                :   MOV_R_M          :  ld   rax, DS                                     
+ 0x40cadc.0  : @_IO_cleanup+412.0                :   CMP_M_R          :  ld   t1, DS                                      
+ 0x40cadc.1  : @_IO_cleanup+412.1                :   CMP_M_R          :  sub   t0, t1, rax                                
+ 0x40cae0.0  : @_IO_cleanup+416.0                :   JNBE_I           :  rdip   t1, %ctrl153,                             
+ 0x40cae0.1  : @_IO_cleanup+416.1                :   JNBE_I           :  limm   t2, 0xfffffffffffffe82                    
+ 0x40cae0.2  : @_IO_cleanup+416.2                :   JNBE_I           :  wrip   , t1, t2                                  
+ 0x40cae6.0  : @_IO_cleanup+422.0                :   JMP_I            :  rdip   t1, %ctrl153,                             
+ 0x40cae6.1  : @_IO_cleanup+422.1                :   JMP_I            :  limm   t2, 0xfffffffffffffee1                    
+ 0x40cae6.2  : @_IO_cleanup+422.2                :   JMP_I            :  wrip   , t1, t2                                  
+ 0x412402.0  : @_int_malloc+194.0                :   MOV_R_R          :  mov   r9d, r9d, ebp                              
+ 0x412405.0  : @_int_malloc+197.0                :   SHR_R_I          :  srli   r9d, r9d, 0x4                             
+ 0x412409.0  : @_int_malloc+201.0                :   LEA_R_M          :  lea   eax, DS                                    
+ 0x41240e.0  : @_int_malloc+206.0                :   LEA_R_M          :  lea   rax, DS                                    
+ 0x412413.0  : @_int_malloc+211.0                :   MOV_R_M          :  ld   r12, DS                                     
+ 0x412417.0  : @_int_malloc+215.0                :   CMP_R_R          :  sub   t0, r12, rax                               
+ 0x41241a.0  : @_int_malloc+218.0                :   JZ_I             :  rdip   t1, %ctrl153,                             
+ 0x41241a.1  : @_int_malloc+218.1                :   JZ_I             :  limm   t2, 0x96                                  
+ 0x41241a.2  : @_int_malloc+218.2                :   JZ_I             :  wrip   , t1, t2                                  
+ 0x434980.0  : @__sbrk.0                         :   PUSH_R           :  st   rbp, SS                                     
+ 0x434980.1  : @__sbrk.1                         :   PUSH_R           :  subi   rsp, rsp, 0x8                             
+ 0x434981.0  : @__sbrk+1.0                       :   MOV_R_R          :  mov   rbp, rbp, rdi                              
+ 0x434984.0  : @__sbrk+4.0                       :   PUSH_R           :  st   rbx, SS                                     
+ 0x434984.1  : @__sbrk+4.1                       :   PUSH_R           :  subi   rsp, rsp, 0x8                             
+ 0x434985.0  : @__sbrk+5.0                       :   SUB_R_I          :  limm   t1, 0x8                                   
+ 0x434985.1  : @__sbrk+5.1                       :   SUB_R_I          :  sub   rsp, rsp, t1                               
+ 0x434989.0  : @__sbrk+9.0                       :   MOV_R_P          :  rdip   t7, %ctrl153,                             
+ 0x434989.1  : @__sbrk+9.1                       :   MOV_R_P          :  ld   rbx, DS                                     
+ 0x434990.0  : @__sbrk+16.0                      :   TEST_R_R         :  and   t0, rbx, rbx                               
+ 0x434993.0  : @__sbrk+19.0                      :   JZ_I             :  rdip   t1, %ctrl153,                             
+ 0x434993.1  : @__sbrk+19.1                      :   JZ_I             :  limm   t2, 0x33                                  
+ 0x434993.2  : @__sbrk+19.2                      :   JZ_I             :  wrip   , t1, t2                                  
+ 0x43499f.0  : @__sbrk+31.0                      :   CMP_R_I          :  limm   t1, 0                                     
+ 0x43499f.1  : @__sbrk+31.1                      :   CMP_R_I          :  sub   t0, rbp, t1                                
+ 0x4349a3.0  : @__sbrk+35.0                      :   JZ_I             :  rdip   t1, %ctrl153,                             
+ 0x4349a3.1  : @__sbrk+35.1                      :   JZ_I             :  limm   t2, 0x14                                  
+ 0x4349a3.2  : @__sbrk+35.2                      :   JZ_I             :  wrip   , t1, t2                                  
+ 0x4349a5.0  : @__sbrk+37.0                      :   JLE_I            :  rdip   t1, %ctrl153,                             
+ 0x4349a5.1  : @__sbrk+37.1                      :   JLE_I            :  limm   t2, 0x49                                  
+ 0x4349a5.2  : @__sbrk+37.2                      :   JLE_I            :  wrip   , t1, t2                                  
+ 0x4349a7.0  : @__sbrk+39.0                      :   MOV_R_R          :  mov   rdi, rdi, rbp                              
+ 0x4349aa.0  : @__sbrk+42.0                      :   ADD_R_R          :  add   rdi, rdi, rbx                              
+ 0x4349ad.0  : @__sbrk+45.0                      :   JB_I             :  rdip   t1, %ctrl153,                             
+ 0x4349ad.1  : @__sbrk+45.1                      :   JB_I             :  limm   t2, 0x2b                                  
+ 0x4349ad.2  : @__sbrk+45.2                      :   JB_I             :  wrip   , t1, t2                                  
+ 0x4349af    : @__sbrk+47                        :   NOP                      :  IntAlu                                           
+ 0x4349b0.0  : @__sbrk+48.0                      :   CALL_NEAR_I      :  limm   t1, 0x2a16b                               
+ 0x4349b0.1  : @__sbrk+48.1                      :   CALL_NEAR_I      :  rdip   t7, %ctrl153,                             
+ 0x4349b0.2  : @__sbrk+48.2                      :   CALL_NEAR_I      :  st   t7, SS                                      
+ 0x4349b0.3  : @__sbrk+48.3                      :   CALL_NEAR_I      :  subi   rsp, rsp, 0x8                             
+ 0x4349b0.4  : @__sbrk+48.4                      :   CALL_NEAR_I      :  wrip   , t7, t1                                  
+ 0x4349b5.0  : @__sbrk+53.0                      :   TEST_R_R         :  and   t0d, eax, eax                              
+ 0x4349b7.0  : @__sbrk+55.0                      :   JS_I             :  rdip   t1, %ctrl153,                             
+ 0x4349b7.1  : @__sbrk+55.1                      :   JS_I             :  limm   t2, 0x21                                  
+ 0x4349b7.2  : @__sbrk+55.2                      :   JS_I             :  wrip   , t1, t2                                  
+ 0x4349b9.0  : @__sbrk+57.0                      :   ADD_R_I          :  limm   t1, 0x8                                   
+ 0x4349b9.1  : @__sbrk+57.1                      :   ADD_R_I          :  add   rsp, rsp, t1                               
+ 0x4349bd.0  : @__sbrk+61.0                      :   MOV_R_R          :  mov   rax, rax, rbx                              
+ 0x4349c0.0  : @__sbrk+64.0                      :   POP_R            :  ld   t1, SS                                      
+ 0x4349c0.1  : @__sbrk+64.1                      :   POP_R            :  addi   rsp, rsp, 0x8                             
+ 0x4349c0.2  : @__sbrk+64.2                      :   POP_R            :  mov   rbx, rbx, t1                               
+ 0x4349c1.0  : @__sbrk+65.0                      :   POP_R            :  ld   t1, SS                                      
+ 0x4349c1.1  : @__sbrk+65.1                      :   POP_R            :  addi   rsp, rsp, 0x8                             
+ 0x4349c1.2  : @__sbrk+65.2                      :   POP_R            :  mov   rbp, rbp, t1                               
+ 0x4349c2.0  : @__sbrk+66.0                      :   RET_NEAR         :  ld   t1, SS                                      
+ 0x4349c2.1  : @__sbrk+66.1                      :   RET_NEAR         :  addi   rsp, rsp, 0x8                             
+ 0x4349c2.2  : @__sbrk+66.2                      :   RET_NEAR         :  wripi   , t1, 0                                  
+ 0x4015b0.0  : @__libc_setup_tls+64.0            :   ADD_R_I          :  limm   t1, 0x38                                  
+ 0x4015b0.1  : @__libc_setup_tls+64.1            :   ADD_R_I          :  add   rcx, rcx, t1                               
+ 0x4015b4.0  : @__libc_setup_tls+68.0            :   CMP_R_R          :  sub   t0, rcx, rax                               
+ 0x4015b7.0  : @__libc_setup_tls+71.0            :   JNB_I            :  rdip   t1, %ctrl153,                             
+ 0x4015b7.1  : @__libc_setup_tls+71.1            :   JNB_I            :  limm   t2, 0x27                                  
+ 0x4015b7.2  : @__libc_setup_tls+71.2            :   JNB_I            :  wrip   , t1, t2                                  
+--------------------------------------------------
+--------------------------------------------------

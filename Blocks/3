@@ -1,0 +1,38 @@
+Block count: 3000	Block size: 34	Total cycles: 102000
+**************************************************
+ 0x401091.0  : @main+51.0                        :   MOV_R_M          :  ld   eax, DS                                     
+ 0x401097.0  : @main+57.0                        :   SUB_R_I          :  limm   t1d, 0x6                                  
+ 0x401097.1  : @main+57.1                        :   SUB_R_I          :  sub   eax, eax, t1d                              
+ 0x40109a.0  : @main+60.0                        :   MOV_M_R          :  st   eax, DS                                     
+ 0x4010a0.0  : @main+66.0                        :   MOV_R_M          :  ld   eax, DS                                     
+ 0x4010a6.0  : @main+72.0                        :   SUB_R_I          :  limm   t1d, 0x1                                  
+ 0x4010a6.1  : @main+72.1                        :   SUB_R_I          :  sub   eax, eax, t1d                              
+ 0x4010a9.0  : @main+75.0                        :   CDQE_R           :  sexti   rax, rax, 0x1f                           
+ 0x4010ab.0  : @main+77.0                        :   MOV_R_M          :  ld   rax, DS                                     
+ 0x4010b3.0  : @main+85.0                        :   MOV_M_R          :  st   rax, DS                                     
+ 0x4010ba.0  : @main+92.0                        :   MOV_M_I          :  limm   t1d, 0x4                                  
+ 0x4010ba.1  : @main+92.1                        :   MOV_M_I          :  st   t1d, DS                                     
+ 0x4010c4.0  : @main+102.0                       :   JMP_I            :  rdip   t1, %ctrl153,                             
+ 0x4010c4.1  : @main+102.1                       :   JMP_I            :  limm   t2, 0x4c                                  
+ 0x4010c4.2  : @main+102.2                       :   JMP_I            :  wrip   , t1, t2                                  
+ 0x401112.0  : @main+180.0                       :   MOV_R_M          :  ld   eax, DS                                     
+ 0x401118.0  : @main+186.0                       :   CDQE_R           :  sexti   rax, rax, 0x1f                           
+ 0x40111a.0  : @main+188.0                       :   CMP_R_M          :  ld   t1, DS                                      
+ 0x40111a.1  : @main+188.1                       :   CMP_R_M          :  sub   t0, rax, t1                                
+ 0x401121.0  : @main+195.0                       :   JL_I             :  rdip   t1, %ctrl153,                             
+ 0x401121.1  : @main+195.1                       :   JL_I             :  limm   t2, 0xffffffffffffffa3                    
+ 0x401121.2  : @main+195.2                       :   JL_I             :  wrip   , t1, t2                                  
+ 0x401123.0  : @main+197.0                       :   MOV_R_M          :  ld   eax, DS                                     
+ 0x401129.0  : @main+203.0                       :   SUB_R_I          :  limm   t1d, 0x1                                  
+ 0x401129.1  : @main+203.1                       :   SUB_R_I          :  sub   eax, eax, t1d                              
+ 0x40112c.0  : @main+206.0                       :   MOVSD_XMM_M      :  ldfp   %xmm0_low, DS                             
+ 0x401134.0  : @main+214.0                       :   MULSD_XMM_M      :  ldfp   %ufp1, DS                                 
+ 0x401134.1  : @main+214.1                       :   MULSD_XMM_M      :  mmulf   %xmm0_low, %xmm0_low, %ufp1              
+ 0x40113c.0  : @main+222.0                       :   CDQE_R           :  sexti   rax, rax, 0x1f                           
+ 0x40113e.0  : @main+224.0                       :   MOVSD_M_XMM      :  stfp   %xmm0_low, DS                             
+ 0x401147.0  : @main+233.0                       :   MOV_R_M          :  ld   eax, DS                                     
+ 0x40114d.0  : @main+239.0                       :   ADD_M_R          :  ldst   t1d, DS                                   
+ 0x40114d.1  : @main+239.1                       :   ADD_M_R          :  add   t1d, t1d, eax                              
+ 0x40114d.2  : @main+239.2                       :   ADD_M_R          :  st   t1d, DS                                     
+--------------------------------------------------
+--------------------------------------------------

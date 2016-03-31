@@ -1,0 +1,7 @@
+[package]
+name = "rustydfg"
+version = "0.1.0"
+authors = ["Clement Cole <clementacole75@gmail.com>"]
+
+[dependencies]
+

@@ -1,0 +1,200 @@
+Block count: 4	Block size: 196	Total cycles: 784
+**************************************************
+ 0x41287b.0  : @_int_malloc+1339.0               :   MOV_R_R          :  mov   edx, edx, eax                              
+ 0x41287d.0  : @_int_malloc+1341.0               :   MOV_R_M          :  ld   esi, DS                                     
+ 0x412884.0  : @_int_malloc+1348.0               :   TEST_R_R         :  and   t0d, esi, esi                              
+ 0x412886.0  : @_int_malloc+1350.0               :   JNZ_I            :  rdip   t1, %ctrl153,                             
+ 0x412886.1  : @_int_malloc+1350.1               :   JNZ_I            :  limm   t2, 0x243                                 
+ 0x412886.2  : @_int_malloc+1350.2               :   JNZ_I            :  wrip   , t1, t2                                  
+ 0x41288c.0  : @_int_malloc+1356.0               :   LEA_R_M          :  lea   eax, DS                                    
+ 0x41288f.0  : @_int_malloc+1359.0               :   CMP_R_I          :  limm   t1d, 0x4                                  
+ 0x41288f.1  : @_int_malloc+1359.1               :   CMP_R_I          :  sub   t0d, eax, t1d                              
+ 0x412892.0  : @_int_malloc+1362.0               :   JZ_I             :  rdip   t1, %ctrl153,                             
+ 0x412892.1  : @_int_malloc+1362.1               :   JZ_I             :  limm   t2, 0x3c                                  
+ 0x412892.2  : @_int_malloc+1362.2               :   JZ_I             :  wrip   , t1, t2                                  
+ 0x412ed8.0  : @_int_malloc+2968.0               :   SUB_R_R          :  sub   r13, r13, rbp                              
+ 0x412edb.0  : @_int_malloc+2971.0               :   XOR_R_R          :  xor   eax, eax, eax                              
+ 0x412edd.0  : @_int_malloc+2973.0               :   CMP_R_I          :  limm   t1, 0x6c0860                              
+ 0x412edd.1  : @_int_malloc+2973.1               :   CMP_R_I          :  sub   t0, rbx, t1                                
+ 0x412ee4.0  : @_int_malloc+2980.0               :   SETNZ_R          :  movi   al, al, 0x1                               
+ 0x412ee4.1  : @_int_malloc+2980.1               :   SETNZ_R          :  movi   al, al, 0                                 
+ 0x412ee7.0  : @_int_malloc+2983.0               :   LEA_R_M          :  lea   rdx, DS                                    
+ 0x412eeb.0  : @_int_malloc+2987.0               :   OR_R_I           :  limm   t1, 0x1                                   
+ 0x412eeb.1  : @_int_malloc+2987.1               :   OR_R_I           :  or   rbp, rbp, t1                                
+ 0x412eef.0  : @_int_malloc+2991.0               :   SAL_R_I          :  slli   rax, rax, 0x2                             
+ 0x412ef3.0  : @_int_malloc+2995.0               :   OR_R_I           :  limm   t1, 0x1                                   
+ 0x412ef3.1  : @_int_malloc+2995.1               :   OR_R_I           :  or   r13, r13, t1                                
+ 0x412ef7.0  : @_int_malloc+2999.0               :   OR_R_R           :  or   rbp, rbp, rax                               
+ 0x412efa.0  : @_int_malloc+3002.0               :   MOV_M_R          :  st   rdx, DS                                     
+ 0x412efe.0  : @_int_malloc+3006.0               :   MOV_M_R          :  st   rbp, DS                                     
+ 0x412f03.0  : @_int_malloc+3011.0               :   MOV_M_R          :  st   r13, DS                                     
+ 0x412f07.0  : @_int_malloc+3015.0               :   JMP_I            :  rdip   t1, %ctrl153,                             
+ 0x412f07.1  : @_int_malloc+3015.1               :   JMP_I            :  limm   t2, 0xfffffffffffff545                    
+ 0x412f07.2  : @_int_malloc+3015.2               :   JMP_I            :  wrip   , t1, t2                                  
+ 0x45eb20.0  : @__brk.0                          :   MOV_R_I          :  limm   ecx, 0xc                                  
+ 0x45eb25.0  : @__brk+5.0                        :   MOV_R_R          :  mov   rsi, rsi, rdi                              
+ 0x45eb28.0  : @__brk+8.0                        :   MOV_R_R          :  mov   eax, eax, ecx                              
+ 0x45eb2a    : @__brk+10                         :   syscall    eax           :  IntAlu                                           
+ 0x45eb2c.0  : @__brk+12.0                       :   CMP_R_I          :  limm   t1, 0xfffffffffffff000                    
+ 0x45eb2c.1  : @__brk+12.1                       :   CMP_R_I          :  sub   t0, rax, t1                                
+ 0x45eb32.0  : @__brk+18.0                       :   MOV_R_R          :  mov   rdx, rdx, rax                              
+ 0x45eb35.0  : @__brk+21.0                       :   JNBE_I           :  rdip   t1, %ctrl153,                             
+ 0x45eb35.1  : @__brk+21.1                       :   JNBE_I           :  limm   t2, 0x2d                                  
+ 0x45eb35.2  : @__brk+21.2                       :   JNBE_I           :  wrip   , t1, t2                                  
+ 0x45eb37.0  : @__brk+23.0                       :   MOV_P_R          :  rdip   t7, %ctrl153,                             
+ 0x45eb37.1  : @__brk+23.1                       :   MOV_P_R          :  st   rax, DS                                     
+ 0x45eb3e.0  : @__brk+30.0                       :   XOR_R_R          :  xor   eax, eax, eax                              
+ 0x45eb40.0  : @__brk+32.0                       :   CMP_R_R          :  sub   t0, rsi, rdx                               
+ 0x45eb43.0  : @__brk+35.0                       :   JNBE_I           :  rdip   t1, %ctrl153,                             
+ 0x45eb43.1  : @__brk+35.1                       :   JNBE_I           :  limm   t2, 0xb                                   
+ 0x45eb43.2  : @__brk+35.2                       :   JNBE_I           :  wrip   , t1, t2                                  
+ 0x45eb45.0  : @__brk+37.0                       :   RET_NEAR         :  ld   t1, SS                                      
+ 0x45eb45.1  : @__brk+37.1                       :   RET_NEAR         :  addi   rsp, rsp, 0x8                             
+ 0x45eb45.2  : @__brk+37.2                       :   RET_NEAR         :  wripi   , t1, 0                                  
+ 0x437e20.0  : @_dl_non_dynamic_init+1680.0      :   MOV_R_R          :  mov   rsi, rsi, rax                              
+ 0x437e23.0  : @_dl_non_dynamic_init+1683.0      :   ADD_R_I          :  limm   t1, 0x38                                  
+ 0x437e23.1  : @_dl_non_dynamic_init+1683.1      :   ADD_R_I          :  add   rax, rax, t1                               
+ 0x437e27.0  : @_dl_non_dynamic_init+1687.0      :   CMP_M_I          :  limm   t2d, 0x6474e551                           
+ 0x437e27.1  : @_dl_non_dynamic_init+1687.1      :   CMP_M_I          :  ld   t1d, DS                                     
+ 0x437e27.2  : @_dl_non_dynamic_init+1687.2      :   CMP_M_I          :  sub   t0d, t1d, t2d                              
+ 0x437e2e.0  : @_dl_non_dynamic_init+1694.0      :   JZ_I             :  rdip   t1, %ctrl153,                             
+ 0x437e2e.1  : @_dl_non_dynamic_init+1694.1      :   JZ_I             :  limm   t2, 0x14c                                 
+ 0x437e2e.2  : @_dl_non_dynamic_init+1694.2      :   JZ_I             :  wrip   , t1, t2                                  
+ 0x437e34.0  : @_dl_non_dynamic_init+1700.0      :   ADD_R_I          :  limm   t1, 0x1                                   
+ 0x437e34.1  : @_dl_non_dynamic_init+1700.1      :   ADD_R_I          :  add   rdx, rdx, t1                               
+ 0x437e38.0  : @_dl_non_dynamic_init+1704.0      :   CMP_R_R          :  sub   t0, rdx, rcx                               
+ 0x437e3b.0  : @_dl_non_dynamic_init+1707.0      :   JNZ_I            :  rdip   t1, %ctrl153,                             
+ 0x437e3b.1  : @_dl_non_dynamic_init+1707.1      :   JNZ_I            :  limm   t2, 0xffffffffffffffe3                    
+ 0x437e3b.2  : @_dl_non_dynamic_init+1707.2      :   JNZ_I            :  wrip   , t1, t2                                  
+ 0x461fe2.0  : @_dl_init_paths+258.0             :   MOV_R_M          :  ld   rdx, DS                                     
+ 0x461fe6.0  : @_dl_init_paths+262.0             :   LEA_R_M          :  lea   rdi, DS                                    
+ 0x461fea.0  : @_dl_init_paths+266.0             :   XOR_R_R          :  xor   esi, esi, esi                              
+ 0x461fec.0  : @_dl_init_paths+268.0             :   ADD_R_I          :  limm   t1, 0x1                                   
+ 0x461fec.1  : @_dl_init_paths+268.1             :   ADD_R_I          :  add   r14, r14, t1                               
+ 0x461ff0.0  : @_dl_init_paths+272.0             :   MOV_M_R          :  st   r9, DS                                      
+ 0x461ff4.0  : @_dl_init_paths+276.0             :   MOV_M_R          :  st   r10, DS                                     
+ 0x461ff8.0  : @_dl_init_paths+280.0             :   CALL_NEAR_I      :  limm   t1, 0xfffffffffffba163                    
+ 0x461ff8.1  : @_dl_init_paths+280.1             :   CALL_NEAR_I      :  rdip   t7, %ctrl153,                             
+ 0x461ff8.2  : @_dl_init_paths+280.2             :   CALL_NEAR_I      :  st   t7, SS                                      
+ 0x461ff8.3  : @_dl_init_paths+280.3             :   CALL_NEAR_I      :  subi   rsp, rsp, 0x8                             
+ 0x461ff8.4  : @_dl_init_paths+280.4             :   CALL_NEAR_I      :  wrip   , t7, t1                                  
+ 0x461ffd.0  : @_dl_init_paths+285.0             :   CMP_R_I          :  limm   t1, 0x4                                   
+ 0x461ffd.1  : @_dl_init_paths+285.1             :   CMP_R_I          :  sub   t0, r14, t1                                
+ 0x462001.0  : @_dl_init_paths+289.0             :   MOV_R_M          :  ld   r10, DS                                     
+ 0x462005.0  : @_dl_init_paths+293.0             :   MOV_R_M          :  ld   r9, DS                                      
+ 0x462009.0  : @_dl_init_paths+297.0             :   JZ_I             :  rdip   t1, %ctrl153,                             
+ 0x462009.1  : @_dl_init_paths+297.1             :   JZ_I             :  limm   t2, 0xb1                                  
+ 0x462009.2  : @_dl_init_paths+297.2             :   JZ_I             :  wrip   , t1, t2                                  
+ 0x414489.0  : @malloc+25.0                      :   MOV_R_I          :  limm   rax, 0xffffffffffffffd0                   
+ 0x414490.0  : @malloc+32.0                      :   MOV_R_M          :  ld   rbx, FS                                     
+ 0x414494.0  : @malloc+36.0                      :   TEST_R_R         :  and   t0, rbx, rbx                               
+ 0x414497.0  : @malloc+39.0                      :   JZ_I             :  rdip   t1, %ctrl153,                             
+ 0x414497.1  : @malloc+39.1                      :   JZ_I             :  limm   t2, 0x93                                  
+ 0x414497.2  : @malloc+39.2                      :   JZ_I             :  wrip   , t1, t2                                  
+ 0x41449d.0  : @malloc+45.0                      :   MOV_R_I          :  limm   esi, 0x1                                  
+ 0x4144a2.0  : @malloc+50.0                      :   XOR_R_R          :  xor   eax, eax, eax                              
+ 0x4144a4.0  : @malloc+52.0                      :   CMP_P_I          :  limm   t2d, 0                                    
+ 0x4144a4.1  : @malloc+52.1                      :   CMP_P_I          :  rdip   t7d, %ctrl153,                            
+ 0x4144a4.2  : @malloc+52.2                      :   CMP_P_I          :  ld   t1d, DS                                     
+ 0x4144a4.3  : @malloc+52.3                      :   CMP_P_I          :  sub   t0d, t1d, t2d                              
+ 0x4144ab.0  : @malloc+59.0                      :   JZ_I             :  rdip   t1, %ctrl153,                             
+ 0x4144ab.1  : @malloc+59.1                      :   JZ_I             :  limm   t2, 0xc                                   
+ 0x4144ab.2  : @malloc+59.2                      :   JZ_I             :  wrip   , t1, t2                                  
+ 0x4144b9.0  : @malloc+73.0                      :   CMPXCHG_M_R      :  ldst   t1d, DS                                   
+ 0x4144b9.1  : @malloc+73.1                      :   CMPXCHG_M_R      :  sub   t0d, eax, t1d                              
+ 0x4144b9.2  : @malloc+73.2                      :   CMPXCHG_M_R      :  mov   t1d, t1d, esi                              
+ 0x4144b9.3  : @malloc+73.3                      :   CMPXCHG_M_R      :  st   t1d, DS                                     
+ 0x4144b9.4  : @malloc+73.4                      :   CMPXCHG_M_R      :  mov   eax, eax, t1d                              
+ 0x4144bc.0  : @malloc+76.0                      :   JNZ_I            :  rdip   t1, %ctrl153,                             
+ 0x4144bc.1  : @malloc+76.1                      :   JNZ_I            :  limm   t2, 0x250d                                
+ 0x4144bc.2  : @malloc+76.2                      :   JNZ_I            :  wrip   , t1, t2                                  
+ 0x4144c2.0  : @malloc+82.0                      :   MOV_R_R          :  mov   rsi, rsi, rbp                              
+ 0x4144c5.0  : @malloc+85.0                      :   MOV_R_R          :  mov   rdi, rdi, rbx                              
+ 0x4144c8.0  : @malloc+88.0                      :   CALL_NEAR_I      :  limm   t1, 0xffffffffffffde73                    
+ 0x4144c8.1  : @malloc+88.1                      :   CALL_NEAR_I      :  rdip   t7, %ctrl153,                             
+ 0x4144c8.2  : @malloc+88.2                      :   CALL_NEAR_I      :  st   t7, SS                                      
+ 0x4144c8.3  : @malloc+88.3                      :   CALL_NEAR_I      :  subi   rsp, rsp, 0x8                             
+ 0x4144c8.4  : @malloc+88.4                      :   CALL_NEAR_I      :  wrip   , t7, t1                                  
+ 0x4144cd.0  : @malloc+93.0                      :   TEST_R_R         :  and   t0, rax, rax                               
+ 0x4144d0.0  : @malloc+96.0                      :   MOV_R_R          :  mov   rdx, rdx, rax                              
+ 0x4144d3.0  : @malloc+99.0                      :   JZ_I             :  rdip   t1, %ctrl153,                             
+ 0x4144d3.1  : @malloc+99.1                      :   JZ_I             :  limm   t2, 0x7b                                  
+ 0x4144d3.2  : @malloc+99.2                      :   JZ_I             :  wrip   , t1, t2                                  
+ 0x4144d5.0  : @malloc+101.0                     :   CMP_P_I          :  limm   t2d, 0                                    
+ 0x4144d5.1  : @malloc+101.1                     :   CMP_P_I          :  rdip   t7d, %ctrl153,                            
+ 0x4144d5.2  : @malloc+101.2                     :   CMP_P_I          :  ld   t1d, DS                                     
+ 0x4144d5.3  : @malloc+101.3                     :   CMP_P_I          :  sub   t0d, t1d, t2d                              
+ 0x4144dc.0  : @malloc+108.0                     :   JZ_I             :  rdip   t1, %ctrl153,                             
+ 0x4144dc.1  : @malloc+108.1                     :   JZ_I             :  limm   t2, 0xb                                   
+ 0x4144dc.2  : @malloc+108.2                     :   JZ_I             :  wrip   , t1, t2                                  
+ 0x4144e9.0  : @malloc+121.0                     :   DEC_M            :  ldst   t1d, DS                                   
+ 0x4144e9.1  : @malloc+121.1                     :   DEC_M            :  subi   t1d, t1d, 0x1                             
+ 0x4144e9.2  : @malloc+121.2                     :   DEC_M            :  st   t1d, DS                                     
+ 0x4144eb.0  : @malloc+123.0                     :   JNZ_I            :  rdip   t1, %ctrl153,                             
+ 0x4144eb.1  : @malloc+123.1                     :   JNZ_I            :  limm   t2, 0x24f9                                
+ 0x4144eb.2  : @malloc+123.2                     :   JNZ_I            :  wrip   , t1, t2                                  
+ 0x4144f1.0  : @malloc+129.0                     :   MOV_R_M          :  ld   rax, DS                                     
+ 0x4144f5.0  : @malloc+133.0                     :   TEST_R_I         :  limm   t1b, 0x2                                  
+ 0x4144f5.1  : @malloc+133.1                     :   TEST_R_I         :  and   t0b, al, t1b                               
+ 0x4144f7.0  : @malloc+135.0                     :   JNZ_I            :  rdip   t1, %ctrl153,                             
+ 0x4144f7.1  : @malloc+135.1                     :   JNZ_I            :  limm   t2, 0x12                                  
+ 0x4144f7.2  : @malloc+135.2                     :   JNZ_I            :  wrip   , t1, t2                                  
+ 0x4144f9.0  : @malloc+137.0                     :   TEST_R_I         :  limm   t1b, 0x4                                  
+ 0x4144f9.1  : @malloc+137.1                     :   TEST_R_I         :  and   t0b, al, t1b                               
+ 0x4144fb.0  : @malloc+139.0                     :   MOV_R_I          :  limm   ecx, 0x6c0860                             
+ 0x414500.0  : @malloc+144.0                     :   JNZ_I            :  rdip   t1, %ctrl153,                             
+ 0x414500.1  : @malloc+144.1                     :   JNZ_I            :  limm   t2, 0x16                                  
+ 0x414500.2  : @malloc+144.2                     :   JNZ_I            :  wrip   , t1, t2                                  
+ 0x414502.0  : @malloc+146.0                     :   CMP_R_R          :  sub   t0, rcx, rbx                               
+ 0x414505.0  : @malloc+149.0                     :   JNZ_I            :  rdip   t1, %ctrl153,                             
+ 0x414505.1  : @malloc+149.1                     :   JNZ_I            :  limm   t2, 0x99                                  
+ 0x414505.2  : @malloc+149.2                     :   JNZ_I            :  wrip   , t1, t2                                  
+ 0x41450b.0  : @malloc+155.0                     :   ADD_R_I          :  limm   t1, 0x8                                   
+ 0x41450b.1  : @malloc+155.1                     :   ADD_R_I          :  add   rsp, rsp, t1                               
+ 0x41450f.0  : @malloc+159.0                     :   MOV_R_R          :  mov   rax, rax, rdx                              
+ 0x414512.0  : @malloc+162.0                     :   POP_R            :  ld   t1, SS                                      
+ 0x414512.1  : @malloc+162.1                     :   POP_R            :  addi   rsp, rsp, 0x8                             
+ 0x414512.2  : @malloc+162.2                     :   POP_R            :  mov   rbx, rbx, t1                               
+ 0x414513.0  : @malloc+163.0                     :   POP_R            :  ld   t1, SS                                      
+ 0x414513.1  : @malloc+163.1                     :   POP_R            :  addi   rsp, rsp, 0x8                             
+ 0x414513.2  : @malloc+163.2                     :   POP_R            :  mov   rbp, rbp, t1                               
+ 0x414514.0  : @malloc+164.0                     :   RET_NEAR         :  ld   t1, SS                                      
+ 0x414514.1  : @malloc+164.1                     :   RET_NEAR         :  addi   rsp, rsp, 0x8                             
+ 0x414514.2  : @malloc+164.2                     :   RET_NEAR         :  wripi   , t1, 0                                  
+ 0x412451.0  : @_int_malloc+273.0                :   MOV_R_P          :  rdip   t7d, %ctrl153,                            
+ 0x412451.1  : @_int_malloc+273.1                :   MOV_R_P          :  ld   eax, DS                                     
+ 0x412457.0  : @_int_malloc+279.0                :   ADD_R_I          :  limm   t1, 0x10                                  
+ 0x412457.1  : @_int_malloc+279.1                :   ADD_R_I          :  add   r12, r12, t1                               
+ 0x41245b.0  : @_int_malloc+283.0                :   TEST_R_R         :  and   t0d, eax, eax                              
+ 0x41245d.0  : @_int_malloc+285.0                :   JNZ_I            :  rdip   t1, %ctrl153,                             
+ 0x41245d.1  : @_int_malloc+285.1                :   JNZ_I            :  limm   t2, 0x35b                                 
+ 0x41245d.2  : @_int_malloc+285.2                :   JNZ_I            :  wrip   , t1, t2                                  
+ 0x41c17e.0  : @memset+30.0                      :   CMP_R_I          :  limm   t1, 0x10                                  
+ 0x41c17e.1  : @memset+30.1                      :   CMP_R_I          :  sub   t0, rdx, t1                                
+ 0x41c182.0  : @memset+34.0                      :   JBE_I            :  rdip   t1, %ctrl153,                             
+ 0x41c182.1  : @memset+34.1                      :   JBE_I            :  limm   t2, 0x9a                                  
+ 0x41c182.2  : @memset+34.2                      :   JBE_I            :  wrip   , t1, t2                                  
+ 0x41c222.0  : @memset+194.0                     :   MOVD_R_XMM       :  mov2int   rcx, rcx, 0                            
+ 0x41c227.0  : @memset+199.0                     :   TEST_R_I         :  limm   t1b, 0x18                                 
+ 0x41c227.1  : @memset+199.1                     :   TEST_R_I         :  and   t0b, dl, t1b                               
+ 0x41c22a.0  : @memset+202.0                     :   JNZ_I            :  rdip   t1, %ctrl153,                             
+ 0x41c22a.1  : @memset+202.1                     :   JNZ_I            :  limm   t2, 0x22                                  
+ 0x41c22a.2  : @memset+202.2                     :   JNZ_I            :  wrip   , t1, t2                                  
+ 0x41c22c.0  : @memset+204.0                     :   TEST_R_I         :  limm   t1b, 0x4                                  
+ 0x41c22c.1  : @memset+204.1                     :   TEST_R_I         :  and   t0b, dl, t1b                               
+ 0x41c22f.0  : @memset+207.0                     :   JNZ_I            :  rdip   t1, %ctrl153,                             
+ 0x41c22f.1  : @memset+207.1                     :   JNZ_I            :  limm   t2, 0x16                                  
+ 0x41c22f.2  : @memset+207.2                     :   JNZ_I            :  wrip   , t1, t2                                  
+ 0x41c247.0  : @memset+231.0                     :   MOV_M_R          :  st   ecx, DS                                     
+ 0x41c249.0  : @memset+233.0                     :   MOV_M_R          :  st   ecx, DS                                     
+ 0x41c24d.0  : @memset+237.0                     :   RET_NEAR         :  ld   t1, SS                                      
+ 0x41c24d.1  : @memset+237.1                     :   RET_NEAR         :  addi   rsp, rsp, 0x8                             
+ 0x41c24d.2  : @memset+237.2                     :   RET_NEAR         :  wripi   , t1, 0                                  
+ 0x4015b9.0  : @__libc_setup_tls+73.0            :   CMP_M_I          :  limm   t2d, 0x7                                  
+ 0x4015b9.1  : @__libc_setup_tls+73.1            :   CMP_M_I          :  ld   t1d, DS                                     
+ 0x4015b9.2  : @__libc_setup_tls+73.2            :   CMP_M_I          :  sub   t0d, t1d, t2d                              
+ 0x4015bc.0  : @__libc_setup_tls+76.0            :   JNZ_I            :  rdip   t1, %ctrl153,                             
+ 0x4015bc.1  : @__libc_setup_tls+76.1            :   JNZ_I            :  limm   t2, 0xfffffffffffffff2                    
+ 0x4015bc.2  : @__libc_setup_tls+76.2            :   JNZ_I            :  wrip   , t1, t2                                  
+--------------------------------------------------
+--------------------------------------------------

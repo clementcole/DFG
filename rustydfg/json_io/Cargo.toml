@@ -1,0 +1,14 @@
+[package]
+name = "json"
+version = "0.1.0"
+keywords = ["file", "json", "io", "load", "save"]
+authors = ["Clement Cole <clementacole75@gmail.com>"]
+description = "A tool for simplifying saving and loading serializable types to and from json files."
+repository = "https://github.com/mitchmindtree/json_io.git"
+homepage = "https://github.com/mitchmindtree/json_io"
+
+[dependencies]
+rustc-serialize = "0.3.14"
+
+[dev-dependencies]
+find_folder = "0.1.1"

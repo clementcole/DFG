@@ -1,0 +1,189 @@
+Block count: 5	Block size: 185	Total cycles: 925
+**************************************************
+ 0x41282f.0  : @_int_malloc+1263.0               :   CMP_R_I          :  limm   t1, 0x3ff                                 
+ 0x41282f.1  : @_int_malloc+1263.1               :   CMP_R_I          :  sub   t0, rbp, t1                                
+ 0x412836.0  : @_int_malloc+1270.0               :   JNBE_I           :  rdip   t1, %ctrl153,                             
+ 0x412836.1  : @_int_malloc+1270.1               :   JNBE_I           :  limm   t2, 0x1b3                                 
+ 0x412836.2  : @_int_malloc+1270.2               :   JNBE_I           :  wrip   , t1, t2                                  
+ 0x41283c.0  : @_int_malloc+1276.0               :   LEA_R_M          :  lea   ecx, DS                                    
+ 0x412840.0  : @_int_malloc+1280.0               :   LEA_R_M          :  lea   eax, DS                                    
+ 0x412845.0  : @_int_malloc+1285.0               :   MOV_R_R          :  mov   edi, edi, ecx                              
+ 0x412847.0  : @_int_malloc+1287.0               :   LEA_R_M          :  lea   rdx, DS                                    
+ 0x41284c.0  : @_int_malloc+1292.0               :   SHR_R_I          :  srli   edi, edi, 0x5                             
+ 0x41284f.0  : @_int_malloc+1295.0               :   MOV_R_R          :  mov   eax, eax, edi                              
+ 0x412851.0  : @_int_malloc+1297.0               :   MOV_R_M          :  ld   esi, DS                                     
+ 0x412858.0  : @_int_malloc+1304.0               :   MOV_R_I          :  limm   eax, 0x1                                  
+ 0x41285d.0  : @_int_malloc+1309.0               :   SAL_R_R          :  sll   eax, eax, ecx                              
+ 0x41285f.0  : @_int_malloc+1311.0               :   TEST_R_R         :  and   t0d, eax, eax                              
+ 0x412861.0  : @_int_malloc+1313.0               :   SETZ_R           :  movi   r11b, r11b, 0x1                           
+ 0x412861.1  : @_int_malloc+1313.1               :   SETZ_R           :  movi   r11b, r11b, 0                             
+ 0x412865.0  : @_int_malloc+1317.0               :   CMP_R_R          :  sub   t0d, eax, esi                              
+ 0x412867.0  : @_int_malloc+1319.0               :   SETNBE_R         :  movi   cl, cl, 0x1                               
+ 0x412867.1  : @_int_malloc+1319.1               :   SETNBE_R         :  movi   cl, cl, 0                                 
+ 0x41286a.0  : @_int_malloc+1322.0               :   OR_R_R           :  or   r11b, r11b, cl                              
+ 0x41286d.0  : @_int_malloc+1325.0               :   JZ_I             :  rdip   t1, %ctrl153,                             
+ 0x41286d.1  : @_int_malloc+1325.1               :   JZ_I             :  limm   t2, 0x109                                 
+ 0x41286d.2  : @_int_malloc+1325.2               :   JZ_I             :  wrip   , t1, t2                                  
+ 0x412873.0  : @_int_malloc+1331.0               :   LEA_R_M          :  lea   eax, DS                                    
+ 0x412876.0  : @_int_malloc+1334.0               :   CMP_R_I          :  limm   t1d, 0x3                                  
+ 0x412876.1  : @_int_malloc+1334.1               :   CMP_R_I          :  sub   t0d, eax, t1d                              
+ 0x412879.0  : @_int_malloc+1337.0               :   JNBE_I           :  rdip   t1, %ctrl153,                             
+ 0x412879.1  : @_int_malloc+1337.1               :   JNBE_I           :  limm   t2, 0x55                                  
+ 0x412879.2  : @_int_malloc+1337.2               :   JNBE_I           :  wrip   , t1, t2                                  
+ 0x4128d0.0  : @_int_malloc+1424.0               :   MOV_R_M          :  ld   r12, DS                                     
+ 0x4128d4.0  : @_int_malloc+1428.0               :   LEA_R_M          :  lea   rdx, DS                                    
+ 0x4128d8.0  : @_int_malloc+1432.0               :   MOV_R_M          :  ld   rax, DS                                     
+ 0x4128dd.0  : @_int_malloc+1437.0               :   MOV_R_R          :  mov   r13, r13, rax                              
+ 0x4128e0.0  : @_int_malloc+1440.0               :   AND_R_I          :  limm   t1, 0xfffffffffffffff8                    
+ 0x4128e0.1  : @_int_malloc+1440.1               :   AND_R_I          :  and   r13, r13, t1                               
+ 0x4128e4.0  : @_int_malloc+1444.0               :   CMP_R_R          :  sub   t0, r13, rdx                               
+ 0x4128e7.0  : @_int_malloc+1447.0               :   JNB_I            :  rdip   t1, %ctrl153,                             
+ 0x4128e7.1  : @_int_malloc+1447.1               :   JNB_I            :  limm   t2, 0x5eb                                 
+ 0x4128e7.2  : @_int_malloc+1447.2               :   JNB_I            :  wrip   , t1, t2                                  
+ 0x414470.0  : @malloc.0                         :   PUSH_R           :  st   rbp, SS                                     
+ 0x414470.1  : @malloc.1                         :   PUSH_R           :  subi   rsp, rsp, 0x8                             
+ 0x414471.0  : @malloc+1.0                       :   MOV_R_R          :  mov   rbp, rbp, rdi                              
+ 0x414474.0  : @malloc+4.0                       :   PUSH_R           :  st   rbx, SS                                     
+ 0x414474.1  : @malloc+4.1                       :   PUSH_R           :  subi   rsp, rsp, 0x8                             
+ 0x414475.0  : @malloc+5.0                       :   SUB_R_I          :  limm   t1, 0x8                                   
+ 0x414475.1  : @malloc+5.1                       :   SUB_R_I          :  sub   rsp, rsp, t1                               
+ 0x414479.0  : @malloc+9.0                       :   MOV_R_P          :  rdip   t7, %ctrl153,                             
+ 0x414479.1  : @malloc+9.1                       :   MOV_R_P          :  ld   rax, DS                                     
+ 0x414480.0  : @malloc+16.0                      :   TEST_R_R         :  and   t0, rax, rax                               
+ 0x414483.0  : @malloc+19.0                      :   JNZ_I            :  rdip   t1, %ctrl153,                             
+ 0x414483.1  : @malloc+19.1                      :   JNZ_I            :  limm   t2, 0x111                                 
+ 0x414483.2  : @malloc+19.2                      :   JNZ_I            :  wrip   , t1, t2                                  
+ 0x412340.0  : @_int_malloc.0                    :   PUSH_R           :  st   r15, SS                                     
+ 0x412340.1  : @_int_malloc.1                    :   PUSH_R           :  subi   rsp, rsp, 0x8                             
+ 0x412342.0  : @_int_malloc+2.0                  :   PUSH_R           :  st   r14, SS                                     
+ 0x412342.1  : @_int_malloc+2.1                  :   PUSH_R           :  subi   rsp, rsp, 0x8                             
+ 0x412344.0  : @_int_malloc+4.0                  :   PUSH_R           :  st   r13, SS                                     
+ 0x412344.1  : @_int_malloc+4.1                  :   PUSH_R           :  subi   rsp, rsp, 0x8                             
+ 0x412346.0  : @_int_malloc+6.0                  :   PUSH_R           :  st   r12, SS                                     
+ 0x412346.1  : @_int_malloc+6.1                  :   PUSH_R           :  subi   rsp, rsp, 0x8                             
+ 0x412348.0  : @_int_malloc+8.0                  :   PUSH_R           :  st   rbp, SS                                     
+ 0x412348.1  : @_int_malloc+8.1                  :   PUSH_R           :  subi   rsp, rsp, 0x8                             
+ 0x412349.0  : @_int_malloc+9.0                  :   PUSH_R           :  st   rbx, SS                                     
+ 0x412349.1  : @_int_malloc+9.1                  :   PUSH_R           :  subi   rsp, rsp, 0x8                             
+ 0x41234a.0  : @_int_malloc+10.0                 :   SUB_R_I          :  limm   t1, 0xa8                                  
+ 0x41234a.1  : @_int_malloc+10.1                 :   SUB_R_I          :  sub   rsp, rsp, t1                               
+ 0x412351.0  : @_int_malloc+17.0                 :   CMP_R_I          :  limm   t1, 0xffffffffffffffbf                    
+ 0x412351.1  : @_int_malloc+17.1                 :   CMP_R_I          :  sub   t0, rsi, t1                                
+ 0x412355.0  : @_int_malloc+21.0                 :   MOV_M_R          :  st   rsi, DS                                     
+ 0x41235a.0  : @_int_malloc+26.0                 :   JNBE_I           :  rdip   t1, %ctrl153,                             
+ 0x41235a.1  : @_int_malloc+26.1                 :   JNBE_I           :  limm   t2, 0x759                                 
+ 0x41235a.2  : @_int_malloc+26.2                 :   JNBE_I           :  wrip   , t1, t2                                  
+ 0x412360.0  : @_int_malloc+32.0                 :   MOV_R_R          :  mov   rax, rax, rsi                              
+ 0x412363.0  : @_int_malloc+35.0                 :   MOV_R_I          :  limm   ebp, 0x20                                 
+ 0x412368.0  : @_int_malloc+40.0                 :   MOV_R_R          :  mov   rbx, rbx, rdi                              
+ 0x41236b.0  : @_int_malloc+43.0                 :   ADD_R_I          :  limm   t1, 0x17                                  
+ 0x41236b.1  : @_int_malloc+43.1                 :   ADD_R_I          :  add   rax, rax, t1                               
+ 0x41236f.0  : @_int_malloc+47.0                 :   MOV_R_R          :  mov   rdx, rdx, rax                              
+ 0x412372.0  : @_int_malloc+50.0                 :   AND_R_I          :  limm   t1, 0xfffffffffffffff0                    
+ 0x412372.1  : @_int_malloc+50.1                 :   AND_R_I          :  and   rdx, rdx, t1                               
+ 0x412376.0  : @_int_malloc+54.0                 :   CMP_R_I          :  limm   t1, 0x20                                  
+ 0x412376.1  : @_int_malloc+54.1                 :   CMP_R_I          :  sub   t0, rax, t1                                
+ 0x41237a.0  : @_int_malloc+58.0                 :   CMOVNB_R_R       :  mov   rbp, rbp, rbp                              
+ 0x41237a.1  : @_int_malloc+58.1                 :   CMOVNB_R_R       :  mov   rbp, rbp, rdx                              
+ 0x41237e.0  : @_int_malloc+62.0                 :   CMP_R_P          :  rdip   t7, %ctrl153,                             
+ 0x41237e.1  : @_int_malloc+62.1                 :   CMP_R_P          :  ld   t1, DS                                      
+ 0x41237e.2  : @_int_malloc+62.2                 :   CMP_R_P          :  sub   t0, rbp, t1                                
+ 0x412385.0  : @_int_malloc+69.0                 :   JNBE_I           :  rdip   t1, %ctrl153,                             
+ 0x412385.1  : @_int_malloc+69.1                 :   JNBE_I           :  limm   t2, 0x72                                  
+ 0x412385.2  : @_int_malloc+69.2                 :   JNBE_I           :  wrip   , t1, t2                                  
+ 0x4123f9.0  : @_int_malloc+185.0                :   CMP_R_I          :  limm   t1, 0x3ff                                 
+ 0x4123f9.1  : @_int_malloc+185.1                :   CMP_R_I          :  sub   t0, rbp, t1                                
+ 0x412400.0  : @_int_malloc+192.0                :   JNBE_I           :  rdip   t1, %ctrl153,                             
+ 0x412400.1  : @_int_malloc+192.1                :   JNBE_I           :  limm   t2, 0x76                                  
+ 0x412400.2  : @_int_malloc+192.2                :   JNBE_I           :  wrip   , t1, t2                                  
+ 0x412463.0  : @_int_malloc+291.0                :   ADD_R_I          :  limm   t1, 0xa8                                  
+ 0x412463.1  : @_int_malloc+291.1                :   ADD_R_I          :  add   rsp, rsp, t1                               
+ 0x41246a.0  : @_int_malloc+298.0                :   MOV_R_R          :  mov   rax, rax, r12                              
+ 0x41246d.0  : @_int_malloc+301.0                :   POP_R            :  ld   t1, SS                                      
+ 0x41246d.1  : @_int_malloc+301.1                :   POP_R            :  addi   rsp, rsp, 0x8                             
+ 0x41246d.2  : @_int_malloc+301.2                :   POP_R            :  mov   rbx, rbx, t1                               
+ 0x41246e.0  : @_int_malloc+302.0                :   POP_R            :  ld   t1, SS                                      
+ 0x41246e.1  : @_int_malloc+302.1                :   POP_R            :  addi   rsp, rsp, 0x8                             
+ 0x41246e.2  : @_int_malloc+302.2                :   POP_R            :  mov   rbp, rbp, t1                               
+ 0x41246f.0  : @_int_malloc+303.0                :   POP_R            :  ld   t1, SS                                      
+ 0x41246f.1  : @_int_malloc+303.1                :   POP_R            :  addi   rsp, rsp, 0x8                             
+ 0x41246f.2  : @_int_malloc+303.2                :   POP_R            :  mov   r12, r12, t1                               
+ 0x412471.0  : @_int_malloc+305.0                :   POP_R            :  ld   t1, SS                                      
+ 0x412471.1  : @_int_malloc+305.1                :   POP_R            :  addi   rsp, rsp, 0x8                             
+ 0x412471.2  : @_int_malloc+305.2                :   POP_R            :  mov   r13, r13, t1                               
+ 0x412473.0  : @_int_malloc+307.0                :   POP_R            :  ld   t1, SS                                      
+ 0x412473.1  : @_int_malloc+307.1                :   POP_R            :  addi   rsp, rsp, 0x8                             
+ 0x412473.2  : @_int_malloc+307.2                :   POP_R            :  mov   r14, r14, t1                               
+ 0x412475.0  : @_int_malloc+309.0                :   POP_R            :  ld   t1, SS                                      
+ 0x412475.1  : @_int_malloc+309.1                :   POP_R            :  addi   rsp, rsp, 0x8                             
+ 0x412475.2  : @_int_malloc+309.2                :   POP_R            :  mov   r15, r15, t1                               
+ 0x412477.0  : @_int_malloc+311.0                :   RET_NEAR         :  ld   t1, SS                                      
+ 0x412477.1  : @_int_malloc+311.1                :   RET_NEAR         :  addi   rsp, rsp, 0x8                             
+ 0x412477.2  : @_int_malloc+311.2                :   RET_NEAR         :  wripi   , t1, 0                                  
+ 0x4124b6.0  : @_int_malloc+374.0                :   MOV_R_R          :  mov   eax, eax, ebp                              
+ 0x4124b8.0  : @_int_malloc+376.0                :   MOV_M_I          :  limm   t1, 0x1                                   
+ 0x4124b8.1  : @_int_malloc+376.1                :   MOV_M_I          :  st   t1, DS                                      
+ 0x4124c1.0  : @_int_malloc+385.0                :   LEA_R_M          :  lea   r15, DS                                    
+ 0x4124c5.0  : @_int_malloc+389.0                :   SHR_R_I          :  srli   eax, eax, 0x4                             
+ 0x4124c8.0  : @_int_malloc+392.0                :   MOV_R_R          :  mov   r13d, r13d, r9d                            
+ 0x4124cb.0  : @_int_malloc+395.0                :   MOV_M_R          :  st   eax, DS                                     
+ 0x4124cf.0  : @_int_malloc+399.0                :   MOV_R_R          :  mov   rax, rax, rbp                              
+ 0x4124d2.0  : @_int_malloc+402.0                :   SHR_R_I          :  srli   rax, rax, 0x6                             
+ 0x4124d6.0  : @_int_malloc+406.0                :   MOV_M_R          :  st   rax, DS                                     
+ 0x4124db.0  : @_int_malloc+411.0                :   ADD_R_I          :  limm   t1d, 0x30                                 
+ 0x4124db.1  : @_int_malloc+411.1                :   ADD_R_I          :  add   eax, eax, t1d                              
+ 0x4124de.0  : @_int_malloc+414.0                :   MOV_M_R          :  st   eax, DS                                     
+ 0x4124e2.0  : @_int_malloc+418.0                :   MOV_R_R          :  mov   rax, rax, rbp                              
+ 0x4124e5.0  : @_int_malloc+421.0                :   SHR_R_I          :  srli   rax, rax, 0x9                             
+ 0x4124e9.0  : @_int_malloc+425.0                :   MOV_M_R          :  st   rax, DS                                     
+ 0x4124ee.0  : @_int_malloc+430.0                :   ADD_R_I          :  limm   t1d, 0x5b                                 
+ 0x4124ee.1  : @_int_malloc+430.1                :   ADD_R_I          :  add   eax, eax, t1d                              
+ 0x4124f1.0  : @_int_malloc+433.0                :   MOV_M_R          :  st   eax, DS                                     
+ 0x4124f5.0  : @_int_malloc+437.0                :   MOV_R_R          :  mov   rax, rax, rbp                              
+ 0x4124f8.0  : @_int_malloc+440.0                :   SHR_R_I          :  srli   rax, rax, 0xc                             
+ 0x4124fc.0  : @_int_malloc+444.0                :   MOV_M_R          :  st   rax, DS                                     
+ 0x412501.0  : @_int_malloc+449.0                :   ADD_R_I          :  limm   t1d, 0x6e                                 
+ 0x412501.1  : @_int_malloc+449.1                :   ADD_R_I          :  add   eax, eax, t1d                              
+ 0x412504.0  : @_int_malloc+452.0                :   MOV_M_R          :  st   eax, DS                                     
+ 0x412508.0  : @_int_malloc+456.0                :   MOV_R_R          :  mov   rax, rax, rbp                              
+ 0x41250b.0  : @_int_malloc+459.0                :   SHR_R_I          :  srli   rax, rax, 0xf                             
+ 0x41250f.0  : @_int_malloc+463.0                :   MOV_M_R          :  st   rax, DS                                     
+ 0x412514.0  : @_int_malloc+468.0                :   ADD_R_I          :  limm   t1d, 0x77                                 
+ 0x412514.1  : @_int_malloc+468.1                :   ADD_R_I          :  add   eax, eax, t1d                              
+ 0x412517.0  : @_int_malloc+471.0                :   MOV_M_R          :  st   eax, DS                                     
+ 0x41251b.0  : @_int_malloc+475.0                :   MOV_R_R          :  mov   rax, rax, rbp                              
+ 0x41251e.0  : @_int_malloc+478.0                :   SHR_R_I          :  srli   rax, rax, 0x12                            
+ 0x41c160.0  : @memset.0                         :   MOVD_XMM_R       :  mov2fp   %xmm8_low, esi, 0                       
+ 0x41c160.1  : @memset.1                         :   MOVD_XMM_R       :  lfpimm   %xmm8_high, 0                           
+ 0x412522.0  : @_int_malloc+482.0                :   MOV_M_R          :  st   rax, DS                                     
+ 0x41c165.0  : @memset+5.0                       :   MOV_R_R          :  mov   rax, rax, rdi                              
+ 0x412527.0  : @_int_malloc+487.0                :   ADD_R_I          :  limm   t1d, 0x7c                                 
+ 0x412527.1  : @_int_malloc+487.1                :   ADD_R_I          :  add   eax, eax, t1d                              
+ 0x41c168.0  : @memset+8.0                       :   PUNPCKLBW_XMM_XMM :  unpack   %xmm8_high, %xmm8_low, %xmm8_low        
+ 0x41c168.1  : @memset+8.1                       :   PUNPCKLBW_XMM_XMM :  unpack   %xmm8_low, %xmm8_low, %xmm8_low         
+ 0x41252a.0  : @_int_malloc+490.0                :   MOV_M_R          :  st   eax, DS                                     
+ 0x41c16d.0  : @memset+13.0                      :   PUNPCKLWD_XMM_XMM :  unpack   %xmm8_high, %xmm8_low, %xmm8_low        
+ 0x41c16d.1  : @memset+13.1                      :   PUNPCKLWD_XMM_XMM :  unpack   %xmm8_low, %xmm8_low, %xmm8_low         
+ 0x41252e.0  : @_int_malloc+494.0                :   LEA_R_M          :  lea   rax, DS                                    
+ 0x41c172.0  : @memset+18.0                      :   PSHUFD_XMM_XMM_I :  shuffle   %ufp1, %xmm8_low, %xmm8_high           
+ 0x41c172.1  : @memset+18.1                      :   PSHUFD_XMM_XMM_I :  shuffle   %xmm8_high, %xmm8_low, %xmm8_high      
+ 0x41c172.2  : @memset+18.2                      :   PSHUFD_XMM_XMM_I :  movfp   %xmm8_low, %ufp1, %xmm8_low              
+ 0x412536.0  : @_int_malloc+502.0                :   SUB_M_R          :  ldst   t1, DS                                    
+ 0x412536.1  : @_int_malloc+502.1                :   SUB_M_R          :  sub   t1, t1, rax                                
+ 0x412536.2  : @_int_malloc+502.2                :   SUB_M_R          :  st   t1, DS                                      
+ 0x41c178.0  : @memset+24.0                      :   CMP_R_I          :  limm   t1, 0x40                                  
+ 0x41c178.1  : @memset+24.1                      :   CMP_R_I          :  sub   t0, rdx, t1                                
+ 0x41253b.0  : @_int_malloc+507.0                :   MOV_R_I          :  limm   r14d, 0x2710                              
+ 0x41c17c.0  : @memset+28.0                      :   JNBE_I           :  rdip   t1, %ctrl153,                             
+ 0x41c17c.1  : @memset+28.1                      :   JNBE_I           :  limm   t2, 0x32                                  
+ 0x41c17c.2  : @memset+28.2                      :   JNBE_I           :  wrip   , t1, t2                                  
+ 0x412541.0  : @_int_malloc+513.0                :   JMP_I            :  rdip   t1, %ctrl153,                             
+ 0x412541.1  : @_int_malloc+513.1                :   JMP_I            :  limm   t2, 0x50                                  
+ 0x412541.2  : @_int_malloc+513.2                :   JMP_I            :  wrip   , t1, t2                                  
+ 0x412596.0  : @_int_malloc+598.0                :   MOV_R_M          :  ld   r12, DS                                     
+ 0x41259a.0  : @_int_malloc+602.0                :   CMP_R_R          :  sub   t0, r12, r15                               
+ 0x41259d.0  : @_int_malloc+605.0                :   JZ_I             :  rdip   t1, %ctrl153,                             
+ 0x41259d.1  : @_int_malloc+605.1                :   JZ_I             :  limm   t2, 0x28c                                 
+ 0x41259d.2  : @_int_malloc+605.2                :   JZ_I             :  wrip   , t1, t2                                  
+--------------------------------------------------
+--------------------------------------------------

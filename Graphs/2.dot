@@ -1,0 +1,26 @@
+digraph test{
+	size = "4,4";
+"0x3e8815" [label = "0x3e8", shape = "circle"];
+"t2d815" [label = "t2d", shape = "point"];
+"0x3e8815" -> "t2d815" ["dir" = "none"];
+"DS816" [label = "DS", shape = "circle"];
+"t1d816" [label = "t1d", shape = "point"];
+"DS816" -> "t1d816" ["dir" = "none"];
+"sub817" [label = "sub", shape = "box"];
+"t0d817" [label = "t0d", shape = "point"];
+"t1d816" -> "sub817";
+"t2d815" -> "sub817";
+"t0d817" [label = "t0d", shape = "point"];
+"sub817" -> "t0d817"["dir" = "none"];
+"t1818" [label = "t1", shape = "point"];
+"%ctrl153818" [label = "%ctrl153", shape = "circle"];
+"%ctrl153818" -> "t1818"["dir" = "none"];
+"0xffffffffffffff2e819" [label = "0xffffffffffffff2e", shape = "circle"];
+"t2819" [label = "t2", shape = "point"];
+"0xffffffffffffff2e819" -> "t2819" ["dir" = "none"];
+"add820" [label = "+", shape = "box"];
+"rip820" [label = "rip", shape = "circle", color = "red"];
+"t1818" -> "add820"; 
+"t2819" -> "add820"; 
+"add820" -> "rip820";
+}

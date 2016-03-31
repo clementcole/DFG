@@ -1,0 +1,26 @@
+digraph test{
+	size = "4,4";
+"0x3e843" [label = "0x3e8", shape = "circle"];
+"t2d43" [label = "t2d", shape = "point"];
+"0x3e843" -> "t2d43" ["dir" = "none"];
+"DS44" [label = "DS", shape = "circle"];
+"t1d44" [label = "t1d", shape = "point"];
+"DS44" -> "t1d44" ["dir" = "none"];
+"sub45" [label = "sub", shape = "box"];
+"t0d45" [label = "t0d", shape = "point"];
+"t1d44" -> "sub45";
+"t2d43" -> "sub45";
+"t0d45" [label = "t0d", shape = "point"];
+"sub45" -> "t0d45"["dir" = "none"];
+"t146" [label = "t1", shape = "point"];
+"%ctrl15346" [label = "%ctrl153", shape = "circle"];
+"%ctrl15346" -> "t146"["dir" = "none"];
+"0xffffffffffffff0847" [label = "0xffffffffffffff08", shape = "circle"];
+"t247" [label = "t2", shape = "point"];
+"0xffffffffffffff0847" -> "t247" ["dir" = "none"];
+"add48" [label = "+", shape = "box"];
+"rip48" [label = "rip", shape = "circle", color = "red"];
+"t146" -> "add48"; 
+"t247" -> "add48"; 
+"add48" -> "rip48";
+}

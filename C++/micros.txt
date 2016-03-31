@@ -1,0 +1,1001 @@
+      limm      t2d  0x3e8                                                                
+      ld      t1d  DS                                                                          
+      sub      t0d  t1d  t2d                                                            
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0xffffffffffffff2e                                        
+      wrip        t1  t2                                                                    
+      ld      eax  DS                                                                          
+      limm      t1d  0x6                                                                    
+      sub      eax  eax  t1d                                                            
+      st      eax  DS                                                                          
+      ld      eax  DS                                                                          
+      limm      t1d  0x1                                                                    
+      sub      eax  eax  t1d                                                            
+      sexti      rax  rax  0x1f                                                      
+      ld      rax  DS                                                                          
+      st      rax  DS                                                                          
+      limm      t1d  0x4                                                                    
+      st      t1d  DS                                                                          
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x4c                                                                    
+      wrip        t1  t2                                                                    
+      ld      eax  DS                                                                          
+      sexti      rax  rax  0x1f                                                      
+      ld      t1  DS                                                                            
+      sub      t0  rax  t1                                                                
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0xffffffffffffffa3                                        
+      wrip        t1  t2                                                                    
+      ld      eax  DS                                                                          
+      limm      t1d  0x1                                                                    
+      sub      eax  eax  t1d                                                            
+      ldfp      %xmm0_low  DS                                                          
+      ldfp      %ufp1  DS                                                                  
+      mmulf      %xmm0_low  %xmm0_low  %ufp1                            
+      sexti      rax  rax  0x1f                                                      
+      stfp      %xmm0_low  DS                                                          
+      ld      eax  DS                                                                          
+      ldst      t1d  DS                                                                      
+      add      t1d  t1d  eax                                                            
+      st      t1d  DS                                                                          
+      limm      t2d  0x3e8                                                                
+      ld      t1d  DS                                                                          
+      sub      t0d  t1d  t2d                                                            
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0xffffffffffffff08                                        
+      wrip        t1  t2                                                                    
+      limm      t1d  0x6                                                                    
+      st      t1d  DS                                                                          
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0xc2                                                                    
+      wrip        t1  t2                                                                    
+      limm      t2d  0x1                                                                    
+      ldst      t1d  DS                                                                      
+      add      t1d  t1d  t2d                                                            
+      st      t1d  DS                                                                          
+      limm      t1d  0x1                                                                    
+      add      edx  edx  t1d                                                            
+      st      rax  DS                                                                          
+      st      rax  DS                                                                          
+      limm      t1  0x10                                                                    
+      add      rax  rax  t1                                                              
+      limm      t1d  0x80                                                                  
+      sub      t0d  edx  t1d                                                            
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0xffffffffffffffe9                                        
+      wrip        t1  t2                                                                    
+      limm      t1  0x3                                                                      
+      sub      rax  rax  t1                                                              
+      limm      t1  0x1e                                                                    
+      sub      t0  rax  t1                                                                
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x16                                                                    
+      wrip        t1  t2                                                                    
+      ld      t1  DS                                                                            
+      wripi        t1  0                                                                    
+      limm      t1  0x10                                                                    
+      add      rdi  rdi  t1                                                              
+      ld      rax  DS                                                                          
+      and      t0  rax  rax                                                              
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0xffffffffffffffd4                                        
+      wrip        t1  t2                                                                    
+      stfp      %xmm8_low  DS                                                          
+      stfp      %xmm8_high  DS                                                        
+      stfp      %xmm8_low  DS                                                          
+      stfp      %xmm8_high  DS                                                        
+      stfp      %xmm8_low  DS                                                          
+      stfp      %xmm8_high  DS                                                        
+      stfp      %xmm8_low  DS                                                          
+      stfp      %xmm8_high  DS                                                        
+      limm      t1  0x40                                                                    
+      add      rcx  rcx  t1                                                              
+      sub      t0  rdx  rcx                                                              
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0xffffffffffffffe0                                        
+      wrip        t1  t2                                                                    
+      rdip      t7  %ctrl153                                                          
+      ld      t1  DS                                                                            
+      st      t7  SS                                                                            
+      subi      rsp  rsp  0x8                                                          
+      wripi        t1  0                                                                    
+      limm      t1  0x18                                                                    
+      add      rbx  rbx  t1                                                              
+      st      rax  DS                                                                          
+      limm      t1  0x4002b0                                                            
+      sub      t0  rbx  t1                                                                
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0xffffffffffffffdf                                        
+      wrip        t1  t2                                                                    
+      mxor      %xmm8_low  %xmm8_low  %xmm8_low                      
+      mxor      %xmm8_high  %xmm8_high  %xmm8_high                
+      mxor      %xmm9_low  %xmm9_low  %xmm9_low                      
+      mxor      %xmm9_high  %xmm9_high  %xmm9_high                
+      mxor      %xmm10_low  %xmm10_low  %xmm10_low                
+      mxor      %xmm10_high  %xmm10_high  %xmm10_high          
+      mxor      %xmm11_low  %xmm11_low  %xmm11_low                
+      mxor      %xmm11_high  %xmm11_high  %xmm11_high          
+      mov      rax  rax  rdi                                                            
+      mov      rcx  rcx  rdi                                                            
+      limm      t1  0xfff                                                                  
+      and      rcx  rcx  t1                                                              
+      limm      t1  0xfcf                                                                  
+      sub      t0  rcx  t1                                                                
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x66                                                                    
+      wrip        t1  t2                                                                    
+      ldfp      %xmm12_low  DS                                                        
+      ldfp      %xmm12_high  DS                                                      
+      mcmpi2r      %xmm12_low  %xmm12_low  %xmm8_low            
+      mcmpi2r      %xmm12_high  %xmm12_high  %xmm8_high      
+      limm      edx  0                                                                        
+      movsign      dl  dl  %xmm12_low                                          
+      movsign      dl  dl  %xmm12_high                                        
+      and      t0d  edx  edx                                                            
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x4                                                                      
+      wrip        t1  t2                                                                    
+      limm      t2d  0x25                                                                  
+      ld      t1d  DS                                                                          
+      sub      t0d  t1d  t2d                                                            
+      ld      rbp  DS                                                                          
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x1b2                                                                  
+      wrip        t1  t2                                                                    
+      st      r15  SS                                                                          
+      subi      rsp  rsp  0x8                                                          
+      st      r14  SS                                                                          
+      subi      rsp  rsp  0x8                                                          
+      st      r13  SS                                                                          
+      subi      rsp  rsp  0x8                                                          
+      st      r12  SS                                                                          
+      subi      rsp  rsp  0x8                                                          
+      st      rbp  SS                                                                          
+      subi      rsp  rsp  0x8                                                          
+      st      rbx  SS                                                                          
+      subi      rsp  rsp  0x8                                                          
+      mov      rbx  rbx  rdi                                                            
+      limm      t1  0x8                                                                      
+      sub      rsp  rsp  t1                                                              
+      limm      t1  0x11e4a                                                              
+      rdip      t7  %ctrl153                                                          
+      st      t7  SS                                                                            
+      subi      rsp  rsp  0x8                                                          
+      wrip        t7  t1                                                                    
+      rdip      t7  %ctrl153                                                          
+      ld      rbp  DS                                                                          
+      and      t0  rbp  rbp                                                              
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0xb2                                                                    
+      wrip        t1  t2                                                                    
+      mov      r14  r14  rax                                                            
+      ld      t1b  DS                                                                          
+      zexti      eax  t1d  0x7                                                        
+      and      t0b  al  al                                                                
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0xa4                                                                    
+      wrip        t1  t2                                                                    
+      limm      t2b  0                                                                        
+      ld      t1b  DS                                                                          
+      sub      t0b  t1b  t2b                                                            
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x46                                                                    
+      wrip        t1  t2                                                                    
+      limm      t1  0x8                                                                      
+      add      rsp  rsp  t1                                                              
+      mov      rax  rax  rbx                                                            
+      ld      t1  SS                                                                            
+      addi      rsp  rsp  0x8                                                          
+      mov      rbx  rbx  t1                                                              
+      ld      t1  SS                                                                            
+      addi      rsp  rsp  0x8                                                          
+      mov      rbp  rbp  t1                                                              
+      ld      t1  SS                                                                            
+      addi      rsp  rsp  0x8                                                          
+      mov      r12  r12  t1                                                              
+      ld      t1  SS                                                                            
+      addi      rsp  rsp  0x8                                                          
+      mov      r13  r13  t1                                                              
+      ld      t1  SS                                                                            
+      addi      rsp  rsp  0x8                                                          
+      mov      r14  r14  t1                                                              
+      ld      t1  SS                                                                            
+      addi      rsp  rsp  0x8                                                          
+      mov      r15  r15  t1                                                              
+      ld      t1  SS                                                                            
+      addi      rsp  rsp  0x8                                                          
+      wripi        t1  0                                                                    
+      ld      t1w  DS                                                                          
+      zexti      r12d  t1d  0xf                                                      
+      lea      r15  DS                                                                        
+      ld      rbx  DS                                                                          
+      lea      r13  DS                                                                        
+      and      t0  rbx  rbx                                                              
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x18                                                                    
+      wrip        t1  t2                                                                    
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0xffffffffffffffcf                                        
+      wrip        t1  t2                                                                    
+      mov      t1  t1  t0                                                                  
+      and      t1d  edx  edx                                                            
+      br      0x1d                                                                                
+      movi      eax  eax  0                                                              
+      subi      t2d  t1d  0x1                                                          
+      xor      t1d  t2d  t1d                                                            
+      srli      t3  t1  0x20                                                            
+      ori      t4d  eax  0x20                                                          
+      mov      eax  eax  t4d                                                            
+      mov      t1d  t1d  t3d                                                            
+      srli      t3  t1  0x10                                                            
+      ori      t4d  eax  0x10                                                          
+      mov      eax  eax  t4d                                                            
+      mov      t1d  t1d  t3d                                                            
+      srli      t3  t1  0x8                                                              
+      ori      t4d  eax  0x8                                                            
+      mov      eax  eax  t4d                                                            
+      mov      t1d  t1d  t3d                                                            
+      srli      t3  t1  0x4                                                              
+      ori      t4d  eax  0x4                                                            
+      mov      eax  eax  t4d                                                            
+      mov      t1d  t1d  t3d                                                            
+      srli      t3  t1  0x2                                                              
+      ori      t4d  eax  0x2                                                            
+      mov      eax  eax  t4d                                                            
+      mov      t1d  t1d  t3d                                                            
+      srli      t3  t1  0x1                                                              
+      ori      t4d  eax  0x1                                                            
+      mov      eax  eax  t4d                                                            
+      fault      No  Fault                                                                  
+      ld      t1  SS                                                                            
+      addi      rsp  rsp  0x8                                                          
+      wripi        t1  0                                                                    
+      limm      t1  0x3ff                                                                  
+      sub      t0  rbp  t1                                                                
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x1b3                                                                  
+      wrip        t1  t2                                                                    
+      lea      ecx  DS                                                                        
+      lea      eax  DS                                                                        
+      mov      edi  edi  ecx                                                            
+      lea      rdx  DS                                                                        
+      srli      edi  edi  0x5                                                          
+      mov      eax  eax  edi                                                            
+      ld      esi  DS                                                                          
+      limm      eax  0x1                                                                    
+      sll      eax  eax  ecx                                                            
+      and      t0d  eax  eax                                                            
+      movi      r11b  r11b  0x1                                                      
+      movi      r11b  r11b  0                                                          
+      sub      t0d  eax  esi                                                            
+      movi      cl  cl  0x1                                                              
+      movi      cl  cl  0                                                                  
+      or      r11b  r11b  cl                                                            
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x109                                                                  
+      wrip        t1  t2                                                                    
+      lea      eax  DS                                                                        
+      limm      t1d  0x3                                                                    
+      sub      t0d  eax  t1d                                                            
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x55                                                                    
+      wrip        t1  t2                                                                    
+      ld      r12  DS                                                                          
+      lea      rdx  DS                                                                        
+      ld      rax  DS                                                                          
+      mov      r13  r13  rax                                                            
+      limm      t1  0xfffffffffffffff8                                        
+      and      r13  r13  t1                                                              
+      sub      t0  r13  rdx                                                              
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x5eb                                                                  
+      wrip        t1  t2                                                                    
+      st      rbp  SS                                                                          
+      subi      rsp  rsp  0x8                                                          
+      mov      rbp  rbp  rdi                                                            
+      st      rbx  SS                                                                          
+      subi      rsp  rsp  0x8                                                          
+      limm      t1  0x8                                                                      
+      sub      rsp  rsp  t1                                                              
+      rdip      t7  %ctrl153                                                          
+      ld      rax  DS                                                                          
+      and      t0  rax  rax                                                              
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x111                                                                  
+      wrip        t1  t2                                                                    
+      st      r15  SS                                                                          
+      subi      rsp  rsp  0x8                                                          
+      st      r14  SS                                                                          
+      subi      rsp  rsp  0x8                                                          
+      st      r13  SS                                                                          
+      subi      rsp  rsp  0x8                                                          
+      st      r12  SS                                                                          
+      subi      rsp  rsp  0x8                                                          
+      st      rbp  SS                                                                          
+      subi      rsp  rsp  0x8                                                          
+      st      rbx  SS                                                                          
+      subi      rsp  rsp  0x8                                                          
+      limm      t1  0xa8                                                                    
+      sub      rsp  rsp  t1                                                              
+      limm      t1  0xffffffffffffffbf                                        
+      sub      t0  rsi  t1                                                                
+      st      rsi  DS                                                                          
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x759                                                                  
+      wrip        t1  t2                                                                    
+      mov      rax  rax  rsi                                                            
+      limm      ebp  0x20                                                                  
+      mov      rbx  rbx  rdi                                                            
+      limm      t1  0x17                                                                    
+      add      rax  rax  t1                                                              
+      mov      rdx  rdx  rax                                                            
+      limm      t1  0xfffffffffffffff0                                        
+      and      rdx  rdx  t1                                                              
+      limm      t1  0x20                                                                    
+      sub      t0  rax  t1                                                                
+      mov      rbp  rbp  rbp                                                            
+      mov      rbp  rbp  rdx                                                            
+      rdip      t7  %ctrl153                                                          
+      ld      t1  DS                                                                            
+      sub      t0  rbp  t1                                                                
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x72                                                                    
+      wrip        t1  t2                                                                    
+      limm      t1  0x3ff                                                                  
+      sub      t0  rbp  t1                                                                
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x76                                                                    
+      wrip        t1  t2                                                                    
+      limm      t1  0xa8                                                                    
+      add      rsp  rsp  t1                                                              
+      mov      rax  rax  r12                                                            
+      ld      t1  SS                                                                            
+      addi      rsp  rsp  0x8                                                          
+      mov      rbx  rbx  t1                                                              
+      ld      t1  SS                                                                            
+      addi      rsp  rsp  0x8                                                          
+      mov      rbp  rbp  t1                                                              
+      ld      t1  SS                                                                            
+      addi      rsp  rsp  0x8                                                          
+      mov      r12  r12  t1                                                              
+      ld      t1  SS                                                                            
+      addi      rsp  rsp  0x8                                                          
+      mov      r13  r13  t1                                                              
+      ld      t1  SS                                                                            
+      addi      rsp  rsp  0x8                                                          
+      mov      r14  r14  t1                                                              
+      ld      t1  SS                                                                            
+      addi      rsp  rsp  0x8                                                          
+      mov      r15  r15  t1                                                              
+      ld      t1  SS                                                                            
+      addi      rsp  rsp  0x8                                                          
+      wripi        t1  0                                                                    
+      mov      eax  eax  ebp                                                            
+      limm      t1  0x1                                                                      
+      st      t1  DS                                                                            
+      lea      r15  DS                                                                        
+      srli      eax  eax  0x4                                                          
+      mov      r13d  r13d  r9d                                                        
+      st      eax  DS                                                                          
+      mov      rax  rax  rbp                                                            
+      srli      rax  rax  0x6                                                          
+      st      rax  DS                                                                          
+      limm      t1d  0x30                                                                  
+      add      eax  eax  t1d                                                            
+      st      eax  DS                                                                          
+      mov      rax  rax  rbp                                                            
+      srli      rax  rax  0x9                                                          
+      st      rax  DS                                                                          
+      limm      t1d  0x5b                                                                  
+      add      eax  eax  t1d                                                            
+      st      eax  DS                                                                          
+      mov      rax  rax  rbp                                                            
+      srli      rax  rax  0xc                                                          
+      st      rax  DS                                                                          
+      limm      t1d  0x6e                                                                  
+      add      eax  eax  t1d                                                            
+      st      eax  DS                                                                          
+      mov      rax  rax  rbp                                                            
+      srli      rax  rax  0xf                                                          
+      st      rax  DS                                                                          
+      limm      t1d  0x77                                                                  
+      add      eax  eax  t1d                                                            
+      st      eax  DS                                                                          
+      mov      rax  rax  rbp                                                            
+      srli      rax  rax  0x12                                                        
+      mov2fp      %xmm8_low  esi  0                                              
+      lfpimm      %xmm8_high  0                                                      
+      st      rax  DS                                                                          
+      mov      rax  rax  rdi                                                            
+      limm      t1d  0x7c                                                                  
+      add      eax  eax  t1d                                                            
+      unpack      %xmm8_high  %xmm8_low  %xmm8_low                
+      unpack      %xmm8_low  %xmm8_low  %xmm8_low                  
+      st      eax  DS                                                                          
+      unpack      %xmm8_high  %xmm8_low  %xmm8_low                
+      unpack      %xmm8_low  %xmm8_low  %xmm8_low                  
+      lea      rax  DS                                                                        
+      shuffle      %ufp1  %xmm8_low  %xmm8_high                      
+      shuffle      %xmm8_high  %xmm8_low  %xmm8_high            
+      movfp      %xmm8_low  %ufp1  %xmm8_low                            
+      ldst      t1  DS                                                                        
+      sub      t1  t1  rax                                                                
+      st      t1  DS                                                                            
+      limm      t1  0x40                                                                    
+      sub      t0  rdx  t1                                                                
+      limm      r14d  0x2710                                                            
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x32                                                                    
+      wrip        t1  t2                                                                    
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x50                                                                    
+      wrip        t1  t2                                                                    
+      ld      r12  DS                                                                          
+      sub      t0  r12  r15                                                              
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x28c                                                                  
+      wrip        t1  t2                                                                    
+      mov      edx  edx  eax                                                            
+      ld      esi  DS                                                                          
+      and      t0d  esi  esi                                                            
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x243                                                                  
+      wrip        t1  t2                                                                    
+      lea      eax  DS                                                                        
+      limm      t1d  0x4                                                                    
+      sub      t0d  eax  t1d                                                            
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x3c                                                                    
+      wrip        t1  t2                                                                    
+      sub      r13  r13  rbp                                                            
+      xor      eax  eax  eax                                                            
+      limm      t1  0x6c0860                                                            
+      sub      t0  rbx  t1                                                                
+      movi      al  al  0x1                                                              
+      movi      al  al  0                                                                  
+      lea      rdx  DS                                                                        
+      limm      t1  0x1                                                                      
+      or      rbp  rbp  t1                                                                
+      slli      rax  rax  0x2                                                          
+      limm      t1  0x1                                                                      
+      or      r13  r13  t1                                                                
+      or      rbp  rbp  rax                                                              
+      st      rdx  DS                                                                          
+      st      rbp  DS                                                                          
+      st      r13  DS                                                                          
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0xfffffffffffff545                                        
+      wrip        t1  t2                                                                    
+      limm      ecx  0xc                                                                    
+      mov      rsi  rsi  rdi                                                            
+      mov      eax  eax  ecx                                                            
+      IntAlu                                                                                      
+      limm      t1  0xfffffffffffff000                                        
+      sub      t0  rax  t1                                                                
+      mov      rdx  rdx  rax                                                            
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x2d                                                                    
+      wrip        t1  t2                                                                    
+      rdip      t7  %ctrl153                                                          
+      st      rax  DS                                                                          
+      xor      eax  eax  eax                                                            
+      sub      t0  rsi  rdx                                                              
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0xb                                                                      
+      wrip        t1  t2                                                                    
+      ld      t1  SS                                                                            
+      addi      rsp  rsp  0x8                                                          
+      wripi        t1  0                                                                    
+      mov      rsi  rsi  rax                                                            
+      limm      t1  0x38                                                                    
+      add      rax  rax  t1                                                              
+      limm      t2d  0x6474e551                                                      
+      ld      t1d  DS                                                                          
+      sub      t0d  t1d  t2d                                                            
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x14c                                                                  
+      wrip        t1  t2                                                                    
+      limm      t1  0x1                                                                      
+      add      rdx  rdx  t1                                                              
+      sub      t0  rdx  rcx                                                              
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0xffffffffffffffe3                                        
+      wrip        t1  t2                                                                    
+      ld      rdx  DS                                                                          
+      lea      rdi  DS                                                                        
+      xor      esi  esi  esi                                                            
+      limm      t1  0x1                                                                      
+      add      r14  r14  t1                                                              
+      st      r9  DS                                                                            
+      st      r10  DS                                                                          
+      limm      t1  0xfffffffffffba163                                        
+      rdip      t7  %ctrl153                                                          
+      st      t7  SS                                                                            
+      subi      rsp  rsp  0x8                                                          
+      wrip        t7  t1                                                                    
+      limm      t1  0x4                                                                      
+      sub      t0  r14  t1                                                                
+      ld      r10  DS                                                                          
+      ld      r9  DS                                                                            
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0xb1                                                                    
+      wrip        t1  t2                                                                    
+      limm      rax  0xffffffffffffffd0                                      
+      ld      rbx  FS                                                                          
+      and      t0  rbx  rbx                                                              
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x93                                                                    
+      wrip        t1  t2                                                                    
+      limm      esi  0x1                                                                    
+      xor      eax  eax  eax                                                            
+      limm      t2d  0                                                                        
+      rdip      t7d  %ctrl153                                                        
+      ld      t1d  DS                                                                          
+      sub      t0d  t1d  t2d                                                            
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0xc                                                                      
+      wrip        t1  t2                                                                    
+      ldst      t1d  DS                                                                      
+      sub      t0d  eax  t1d                                                            
+      mov      t1d  t1d  esi                                                            
+      st      t1d  DS                                                                          
+      mov      eax  eax  t1d                                                            
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x250d                                                                
+      wrip        t1  t2                                                                    
+      mov      rsi  rsi  rbp                                                            
+      mov      rdi  rdi  rbx                                                            
+      limm      t1  0xffffffffffffde73                                        
+      rdip      t7  %ctrl153                                                          
+      st      t7  SS                                                                            
+      subi      rsp  rsp  0x8                                                          
+      wrip        t7  t1                                                                    
+      and      t0  rax  rax                                                              
+      mov      rdx  rdx  rax                                                            
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x7b                                                                    
+      wrip        t1  t2                                                                    
+      limm      t2d  0                                                                        
+      rdip      t7d  %ctrl153                                                        
+      ld      t1d  DS                                                                          
+      sub      t0d  t1d  t2d                                                            
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0xb                                                                      
+      wrip        t1  t2                                                                    
+      ldst      t1d  DS                                                                      
+      subi      t1d  t1d  0x1                                                          
+      st      t1d  DS                                                                          
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x24f9                                                                
+      wrip        t1  t2                                                                    
+      ld      rax  DS                                                                          
+      limm      t1b  0x2                                                                    
+      and      t0b  al  t1b                                                              
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x12                                                                    
+      wrip        t1  t2                                                                    
+      limm      t1b  0x4                                                                    
+      and      t0b  al  t1b                                                              
+      limm      ecx  0x6c0860                                                          
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x16                                                                    
+      wrip        t1  t2                                                                    
+      sub      t0  rcx  rbx                                                              
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x99                                                                    
+      wrip        t1  t2                                                                    
+      limm      t1  0x8                                                                      
+      add      rsp  rsp  t1                                                              
+      mov      rax  rax  rdx                                                            
+      ld      t1  SS                                                                            
+      addi      rsp  rsp  0x8                                                          
+      mov      rbx  rbx  t1                                                              
+      ld      t1  SS                                                                            
+      addi      rsp  rsp  0x8                                                          
+      mov      rbp  rbp  t1                                                              
+      ld      t1  SS                                                                            
+      addi      rsp  rsp  0x8                                                          
+      wripi        t1  0                                                                    
+      rdip      t7d  %ctrl153                                                        
+      ld      eax  DS                                                                          
+      limm      t1  0x10                                                                    
+      add      r12  r12  t1                                                              
+      and      t0d  eax  eax                                                            
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x35b                                                                  
+      wrip        t1  t2                                                                    
+      limm      t1  0x10                                                                    
+      sub      t0  rdx  t1                                                                
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x9a                                                                    
+      wrip        t1  t2                                                                    
+      mov2int      rcx  rcx  0                                                        
+      limm      t1b  0x18                                                                  
+      and      t0b  dl  t1b                                                              
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x22                                                                    
+      wrip        t1  t2                                                                    
+      limm      t1b  0x4                                                                    
+      and      t0b  dl  t1b                                                              
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x16                                                                    
+      wrip        t1  t2                                                                    
+      st      ecx  DS                                                                          
+      st      ecx  DS                                                                          
+      ld      t1  SS                                                                            
+      addi      rsp  rsp  0x8                                                          
+      wripi        t1  0                                                                    
+      limm      t2d  0x7                                                                    
+      ld      t1d  DS                                                                          
+      sub      t0d  t1d  t2d                                                            
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0xfffffffffffffff2                                        
+      wrip        t1  t2                                                                    
+      mov      edx  edx  eax                                                            
+      ld      esi  DS                                                                          
+      and      t0d  esi  esi                                                            
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x22a                                                                  
+      wrip        t1  t2                                                                    
+      lea      eax  DS                                                                        
+      limm      t1d  0x4                                                                    
+      sub      t0d  eax  t1d                                                            
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x23                                                                    
+      wrip        t1  t2                                                                    
+      mov      edx  edx  eax                                                            
+      ld      esi  DS                                                                          
+      and      t0d  esi  esi                                                            
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x211                                                                  
+      wrip        t1  t2                                                                    
+      and      t0d  edi  edi                                                            
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0xe                                                                      
+      wrip        t1  t2                                                                    
+      ld      t1b  DS                                                                          
+      sexti      esi  t1d  0x7                                                        
+      lea      edx  DS                                                                        
+      limm      t1b  0x9                                                                    
+      sub      t0b  dl  t1b                                                              
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x5c                                                                    
+      wrip        t1  t2                                                                    
+      ld      t1b  DS                                                                          
+      sexti      edx  t1d  0x7                                                        
+      lea      rcx  DS                                                                        
+      limm      t1d  0x30                                                                  
+      sub      esi  esi  t1d                                                            
+      lea      edi  DS                                                                        
+      limm      t1b  0x9                                                                    
+      sub      t0b  dil  t1b                                                            
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x20                                                                    
+      wrip        t1  t2                                                                    
+      slli      eax  eax  0x8                                                          
+      limm      t1d  0x1                                                                    
+      add      r8d  r8d  t1d                                                            
+      lea      rdi  DS                                                                        
+      or      eax  eax  esi                                                              
+      limm      t1b  0x2e                                                                  
+      sub      t0b  dl  t1b                                                              
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x10                                                                    
+      wrip        t1  t2                                                                    
+      ld      rdx  DS                                                                          
+      ld      rcx  DS                                                                          
+      lea      rax  DS                                                                        
+      st      rbx  DS                                                                          
+      st      rbx  DS                                                                          
+      limm      t1  0x4a982c                                                            
+      st      t1  DS                                                                            
+      limm      t1  0                                                                          
+      st      t1  DS                                                                            
+      st      rdx  DS                                                                          
+      st      r9  DS                                                                            
+      add      r15  r15  rcx                                                            
+      add      rbx  rbx  rcx                                                            
+      limm      t2b  0x2f                                                                  
+      ld      t1b  DS                                                                          
+      sub      t0b  t1b  t2b                                                            
+      lea      rdx  DS                                                                        
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x19f                                                                  
+      wrip        t1  t2                                                                    
+      mov      r13  r13  r10                                                            
+      mov      r9  r9  rdx                                                                
+      mov      r10  r10  rax                                                            
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0xffffffffffffff85                                        
+      wrip        t1  t2                                                                    
+      ld      edx  DS                                                                          
+      rdip      t7  %ctrl153                                                          
+      st      rbx  DS                                                                          
+      and      t0d  edx  edx                                                            
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x11d                                                                  
+      wrip        t1  t2                                                                    
+      rdip      t7  %ctrl153                                                          
+      limm      t1  0                                                                          
+      st      t1  DS                                                                            
+      mov      edx  edx  ebp                                                            
+      ld      rbx  DS                                                                          
+      mov      ebp  ebp  edx                                                            
+      and      t0  rbx  rbx                                                              
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0xffffffffffffffc2                                        
+      wrip        t1  t2                                                                    
+      ld      edx  DS                                                                          
+      limm      t1b  0x2                                                                    
+      and      t0b  dl  t1b                                                              
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0xa5                                                                    
+      wrip        t1  t2                                                                    
+      limm      t1d  0xffffffffffffffff                                      
+      st      t1d  DS                                                                          
+      ld      rbx  DS                                                                          
+      and      t0  rbx  rbx                                                              
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0xffffffffffffff39                                        
+      wrip        t1  t2                                                                    
+      ld      rax  DS                                                                          
+      ld      t1  DS                                                                            
+      sub      t0  t1  rax                                                                
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0xfffffffffffffe82                                        
+      wrip        t1  t2                                                                    
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0xfffffffffffffee1                                        
+      wrip        t1  t2                                                                    
+      mov      r9d  r9d  ebp                                                            
+      srli      r9d  r9d  0x4                                                          
+      lea      eax  DS                                                                        
+      lea      rax  DS                                                                        
+      ld      r12  DS                                                                          
+      sub      t0  r12  rax                                                              
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x96                                                                    
+      wrip        t1  t2                                                                    
+      st      rbp  SS                                                                          
+      subi      rsp  rsp  0x8                                                          
+      mov      rbp  rbp  rdi                                                            
+      st      rbx  SS                                                                          
+      subi      rsp  rsp  0x8                                                          
+      limm      t1  0x8                                                                      
+      sub      rsp  rsp  t1                                                              
+      rdip      t7  %ctrl153                                                          
+      ld      rbx  DS                                                                          
+      and      t0  rbx  rbx                                                              
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x33                                                                    
+      wrip        t1  t2                                                                    
+      limm      t1  0                                                                          
+      sub      t0  rbp  t1                                                                
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x14                                                                    
+      wrip        t1  t2                                                                    
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x49                                                                    
+      wrip        t1  t2                                                                    
+      mov      rdi  rdi  rbp                                                            
+      add      rdi  rdi  rbx                                                            
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x2b                                                                    
+      wrip        t1  t2                                                                    
+      IntAlu                                                                                      
+      limm      t1  0x2a16b                                                              
+      rdip      t7  %ctrl153                                                          
+      st      t7  SS                                                                            
+      subi      rsp  rsp  0x8                                                          
+      wrip        t7  t1                                                                    
+      and      t0d  eax  eax                                                            
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x21                                                                    
+      wrip        t1  t2                                                                    
+      limm      t1  0x8                                                                      
+      add      rsp  rsp  t1                                                              
+      mov      rax  rax  rbx                                                            
+      ld      t1  SS                                                                            
+      addi      rsp  rsp  0x8                                                          
+      mov      rbx  rbx  t1                                                              
+      ld      t1  SS                                                                            
+      addi      rsp  rsp  0x8                                                          
+      mov      rbp  rbp  t1                                                              
+      ld      t1  SS                                                                            
+      addi      rsp  rsp  0x8                                                          
+      wripi        t1  0                                                                    
+      limm      t1  0x38                                                                    
+      add      rcx  rcx  t1                                                              
+      sub      t0  rcx  rax                                                              
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x27                                                                    
+      wrip        t1  t2                                                                    
+      lea      eax  DS                                                                        
+      sexti      rdx  rax  0x1f                                                      
+      limm      t2b  0x2f                                                                  
+      ld      t1b  SS                                                                          
+      sub      t0b  t1b  t2b                                                            
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x44                                                                    
+      wrip        t1  t2                                                                    
+      limm      t1d  0x1                                                                    
+      sub      t0d  ebx  t1d                                                            
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0xffffffffffffffed                                        
+      wrip        t1  t2                                                                    
+      mov      rdx  rdx  r13                                                            
+      mov      rsi  rsi  r12                                                            
+      mov      edi  edi  ebp                                                            
+      rdip      t7  %ctrl153                                                          
+      ld      t1  DS                                                                            
+      st      t7  SS                                                                            
+      subi      rsp  rsp  0x8                                                          
+      wripi        t1  0                                                                    
+      limm      t1  0x1                                                                      
+      add      rbx  rbx  t1                                                              
+      sub      t0  rbx  r14                                                              
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0xffffffffffffffe8                                        
+      wrip        t1  t2                                                                    
+      lea      eax  DS                                                                        
+      lea      rax  DS                                                                        
+      ld      rdx  DS                                                                          
+      sub      t0  rdx  rax                                                              
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0xfffffffffffffe36                                        
+      wrip        t1  t2                                                                    
+      rdip      t7  %ctrl153                                                          
+      ld      t1  DS                                                                            
+      st      t7  SS                                                                            
+      subi      rsp  rsp  0x8                                                          
+      wripi        t1  0                                                                    
+      limm      t1  0x1                                                                      
+      sub      rbx  rbx  t1                                                              
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0xfffffffffffffff3                                        
+      wrip        t1  t2                                                                    
+      limm      t1  0x20                                                                    
+      sub      t0  rdx  t1                                                                
+      mov      rax  rax  rdi                                                            
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x77                                                                    
+      wrip        t1  t2                                                                    
+      ld      rax  DS                                                                          
+      mov      rdx  rdx  rax                                                            
+      slli      rdx  rdx  0x5                                                          
+      and      t0  rax  rax                                                              
+      lea      rcx  DS                                                                        
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x2a                                                                    
+      wrip        t1  t2                                                                    
+      limm      t1d  0x3                                                                    
+      sub      t0d  r8d  t1d                                                            
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0xffffffffffffffa9                                        
+      wrip        t1  t2                                                                    
+      limm      t1d  0x1008                                                              
+      and      edx  edx  t1d                                                            
+      limm      t1d  0x8                                                                    
+      sub      t0d  edx  t1d                                                            
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x96                                                                    
+      wrip        t1  t2                                                                    
+      limm      t1  0xfffffffffffffff0                                        
+      and      rax  rax  t1                                                              
+      ldfp      %ufp1  DS                                                                  
+      ldfp      %ufp2  DS                                                                  
+      mcmpi2r      %xmm10_low  %xmm10_low  %ufp1                    
+      mcmpi2r      %xmm10_high  %xmm10_high  %ufp2                
+      ldfp      %ufp1  DS                                                                  
+      ldfp      %ufp2  DS                                                                  
+      mcmpi2r      %xmm11_low  %xmm11_low  %ufp1                    
+      mcmpi2r      %xmm11_high  %xmm11_high  %ufp2                
+      limm      edx  0                                                                        
+      movsign      dl  dl  %xmm9_low                                            
+      movsign      dl  dl  %xmm9_high                                          
+      limm      r8d  0                                                                        
+      movsign      r8b  r8b  %xmm10_low                                      
+      movsign      r8b  r8b  %xmm10_high                                    
+      slli      rdx  rdx  0x10                                                        
+      slli      rcx  rcx  0x10                                                        
+      or      rcx  rcx  r8                                                                
+      slli      rcx  rcx  0x20                                                        
+      mov      rcx  rcx  rdi                                                            
+      limm      t1  0xffffffffffffffc0                                        
+      and      rax  rax  t1                                                              
+      and      t0  rdx  rdx                                                              
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x76                                                                    
+      wrip        t1  t2                                                                    
+      mov      t1  t1  t0                                                                  
+      and      t1  rdx  rdx                                                              
+      br      0x1d                                                                                
+      movi      rax  rax  0                                                              
+      subi      t2  t1  0x1                                                              
+      xor      t1  t2  t1                                                                  
+      srli      t3  t1  0x20                                                            
+      ori      t4  rax  0x20                                                            
+      mov      rax  rax  t4                                                              
+      mov      t1  t1  t3                                                                  
+      srli      t3  t1  0x10                                                            
+      ori      t4  rax  0x10                                                            
+      mov      rax  rax  t4                                                              
+      mov      t1  t1  t3                                                                  
+      srli      t3  t1  0x8                                                              
+      ori      t4  rax  0x8                                                              
+      mov      rax  rax  t4                                                              
+      mov      t1  t1  t3                                                                  
+      srli      t3  t1  0x4                                                              
+      ori      t4  rax  0x4                                                              
+      mov      rax  rax  t4                                                              
+      mov      t1  t1  t3                                                                  
+      srli      t3  t1  0x2                                                              
+      ori      t4  rax  0x2                                                              
+      mov      rax  rax  t4                                                              
+      mov      t1  t1  t3                                                                  
+      srli      t3  t1  0x1                                                              
+      ori      t4  rax  0x1                                                              
+      mov      rax  rax  t4                                                              
+      fault      No  Fault                                                                  
+      ld      t1  SS                                                                            
+      addi      rsp  rsp  0x8                                                          
+      wripi        t1  0                                                                    
+      limm      t1  0x8                                                                      
+      sub      rsp  rsp  t1                                                              
+      limm      t1  0x1dcd7                                                              
+      rdip      t7  %ctrl153                                                          
+      st      t7  SS                                                                            
+      subi      rsp  rsp  0x8                                                          
+      wrip        t7  t1                                                                    
+      xor      edx  edx  edx                                                            
+      limm      t1  0xffffffffffffffff                                        
+      sub      t0  rax  t1                                                                
+      mov      rdx  rdx  rdx                                                            
+      mov      rdx  rdx  rax                                                            
+      limm      t1  0x8                                                                      
+      add      rsp  rsp  t1                                                              
+      mov      rax  rax  rdx                                                            
+      ld      t1  SS                                                                            
+      addi      rsp  rsp  0x8                                                          
+      wripi        t1  0                                                                    
+      mov      r8d  r8d  ebp                                                            
+      srli      r8d  r8d  0x4                                                          
+      limm      t1d  0x2                                                                    
+      sub      r8d  r8d  t1d                                                            
+      mov      eax  eax  r8d                                                            
+      ld      rcx  DS                                                                          
+      lea      rsi  DS                                                                        
+      lea      rdx  DS                                                                        
+      and      t0  rcx  rcx                                                              
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x52                                                                    
+      wrip        t1  t2                                                                    
+      mov      r9  r9  rbp                                                                
+      srli      r9  r9  0x6                                                              
+      limm      t1  0x30                                                                    
+      sub      t0  r9  t1                                                                  
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x627                                                                  
+      wrip        t1  t2                                                                    
+      ld      t1b  DS                                                                          
+      limm      t2b  0x1                                                                    
+      and      t0b  t1b  t2b                                                            
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x12                                                                    
+      wrip        t1  t2                                                                    
+      rdip      t7d  %ctrl153                                                        
+      ld      eax  DS                                                                          
+      and      t0d  eax  eax                                                            
+      rdip      t1  %ctrl153                                                          
+      limm      t2  0x29                                                                    
+      wrip        t1  t2                                                                    
+      ldfp      %ufp1  DS                                                                  
+      ldfp      %ufp2  DS                                                                  
+      mcmpi2r      %xmm9_low  %xmm9_low  %ufp1                        
+      mcmpi2r      %xmm9_high  %xmm9_high  %ufp2                    
+      limm      ecx  0                                                                        
+      movsign      cl  cl  %xmm11_low                                          
+      movsign      cl  cl  %xmm11_high                                        
+      or      rdx  rdx  rcx                                                              
+      xor      rcx  rcx  rax                                                            
+      sra      rdx  rdx  rcx                                                            

@@ -1,0 +1,32 @@
+digraph test{
+	size = "4,4";
+"0x654" [label = "0x6", shape = "circle"];
+"t1d54" [label = "t1d", shape = "point"];
+"0x654" -> "t1d54" ["dir" = "none"];
+"t1d54" -> "DS55";
+"t156" [label = "t1", shape = "point"];
+"%ctrl15356" [label = "%ctrl153", shape = "circle"];
+"%ctrl15356" -> "t156"["dir" = "none"];
+"0xc257" [label = "0xc2", shape = "circle"];
+"t257" [label = "t2", shape = "point"];
+"0xc257" -> "t257" ["dir" = "none"];
+"add58" [label = "+", shape = "box"];
+"rip58" [label = "rip", shape = "circle", color = "red"];
+"t156" -> "add58"; 
+"t257" -> "add58"; 
+"add58" -> "rip58";
+"0x159" [label = "0x1", shape = "circle"];
+"t2d59" [label = "t2d", shape = "point"];
+"0x159" -> "t2d59" ["dir" = "none"];
+"t1d60"[label = "t1d", shape = "circle"];
+"DS60" [label = "DS", shape = "circle"];
+"t1d60" [label = "t1d", shape = "point"];
+"DS60" -> "t1d60" ["dir" = "none"];
+"add61" [label = "add", shape = "box"];
+"t1d61" [label = "t1d", shape = "point"];
+"t1d60" -> "add61";
+"t2d59" -> "add61";
+"t1d61" [label = "t1d", shape = "point"];
+"add61" -> "t1d61"["dir" = "none"];
+"t1d61" -> "DS62";
+}

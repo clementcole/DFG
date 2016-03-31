@@ -1,0 +1,17 @@
+Block count: 9	Block size: 13	Total cycles: 117
+**************************************************
+ 0x401265.0  : @__libc_start_main+213.0          :   CALL_NEAR_M      :  rdip   t7, %ctrl153,                             
+ 0x401265.1  : @__libc_start_main+213.1          :   CALL_NEAR_M      :  ld   t1, DS                                      
+ 0x401265.2  : @__libc_start_main+213.2          :   CALL_NEAR_M      :  st   t7, SS                                      
+ 0x401265.3  : @__libc_start_main+213.3          :   CALL_NEAR_M      :  subi   rsp, rsp, 0x8                             
+ 0x401265.4  : @__libc_start_main+213.4          :   CALL_NEAR_M      :  wripi   , t1, 0                                  
+ 0x401268.0  : @__libc_start_main+216.0          :   ADD_R_I          :  limm   t1, 0x18                                  
+ 0x401268.1  : @__libc_start_main+216.1          :   ADD_R_I          :  add   rbx, rbx, t1                               
+ 0x40126c.0  : @__libc_start_main+220.0          :   MOV_M_R          :  st   rax, DS                                     
+ 0x401270.0  : @__libc_start_main+224.0          :   CMP_R_I          :  limm   t1, 0x4002b0                              
+ 0x401270.1  : @__libc_start_main+224.1          :   CMP_R_I          :  sub   t0, rbx, t1                                
+ 0x401277.0  : @__libc_start_main+231.0          :   JB_I             :  rdip   t1, %ctrl153,                             
+ 0x401277.1  : @__libc_start_main+231.1          :   JB_I             :  limm   t2, 0xffffffffffffffdf                    
+ 0x401277.2  : @__libc_start_main+231.2          :   JB_I             :  wrip   , t1, t2                                  
+--------------------------------------------------
+--------------------------------------------------

@@ -1,0 +1,10 @@
+Block count: 4000	Block size: 6	Total cycles: 24000
+**************************************************
+ 0x401153.0  : @main+245.0                       :   CMP_M_I          :  limm   t2d, 0x3e8                                
+ 0x401153.1  : @main+245.1                       :   CMP_M_I          :  ld   t1d, DS                                     
+ 0x401153.2  : @main+245.2                       :   CMP_M_I          :  sub   t0d, t1d, t2d                              
+ 0x40115d.0  : @main+255.0                       :   JLE_I            :  rdip   t1, %ctrl153,                             
+ 0x40115d.1  : @main+255.1                       :   JLE_I            :  limm   t2, 0xffffffffffffff2e                    
+ 0x40115d.2  : @main+255.2                       :   JLE_I            :  wrip   , t1, t2                                  
+--------------------------------------------------
+--------------------------------------------------
