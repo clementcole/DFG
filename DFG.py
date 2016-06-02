@@ -52,8 +52,13 @@ test_output = open('current_dictionary.md', 'a')
 no_dfg = open('operators_with_no_dfg.txt', 'a')
 dest_node_file = open('DNF.txt', 'a')
 instructions_file = open("line.txt", 'a')
+absolute_nodes = []
+relative_nodes = []
+macro_nodes = []
+op_nodes = []  #list of op_nodes
 dest_nodes = []  #list of destination nodes
-dest_node_labels = [] #list of destination node labels
+source1 = []	#list of destination nodes
+source2 = []	#list of source2 nodes
 temp_reg_file = open("temp_registers", 'a')
 #output_path = "/Graphs/"
 #if os.path.exists(output_path):
@@ -155,42 +160,11 @@ def ADD(instruction, line_number, graph):  #Generic add operator
 	src1 = instruction[2]
 	src2 = instruction[3]
 	op_node = op + str(line_number)
-	dest_node = dest + str(line_number)
-	dest_node = dest + str(line_number)
-	src1_node = src1 + str(line_number)
-	src2_node = src2 + str(line_number)
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(op_node, op, op_shape))
-	if dest in temp_registers:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-	if ( __check_label__(instruction[2]) != 0): #If the src1 is plotted
-		i = __check_label__(instruction[2]) - 1 
-		s1 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s1, op_node))
-	else:
-		if src1 in temp_registers:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, temp_reg_shape))
-		else:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src1_node, op_node)) #Find a way to equate the previous node pointing to src1 in the list of destination nodes. 
-	if (__check_label__(instruction[3]) != 0): #If the src2 is plotted
-		i = __check_label__(instruction[3]) - 1
-		s2 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s2, op_node))
-	else:
-		if src2 in temp_registers:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, temp_reg_shape))
-		else:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src2_node, op_node))
-	if dest in temp_registers:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-		graph.write("\"%s\" -> \"%s\"[\"dir\" = \"none\"];\n" %(op_node, dest_node))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(op_node, dest_node))	
-	__add_dest_list__(dest_node, dest)
+	op_nodes.append(op_node)
+	dest_nodes.append(dest)
+	source1.append(src1)
+	source2.append(src2)
+	
 
 	
 
@@ -213,41 +187,10 @@ def ADDI(instruction, line_number, graph):  #Add immediate operator
 	src1 = instruction[2]
 	src2  = instruction[3]
 	op_node   = op   + str(line_number)
-	dest_node = dest + str(line_number)
-	src1_node = src1 + str(line_number)
-	src2_node  = src2  + str(line_number)
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(op_node, op, op_shape))
-	if dest in temp_registers:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-	if ( __check_label__(instruction[2]) != 0): #If the src1 is plotted
-		i = __check_label__(instruction[2]) - 1 
-		s1 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s1, op_node))
-	else:
-		if src1 in temp_registers:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, temp_reg_shape))
-		else:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src1_node, op_node)) #Find a way to equate the previous node pointing to src1 in the list of destination nodes. 
-	if (__check_label__(instruction[3]) != 0): #If the src2 is plotted
-		i = __check_label__(instruction[3]) - 1
-		s2 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s2, op_node))
-	else:
-		if src2 in temp_registers:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, temp_reg_shape))
-		else:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src2_node, op_node))
-	if dest in temp_registers:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-		graph.write("\"%s\" -> \"%s\"[\"dir\" = \"none\"];\n" %(op_node, dest_node))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(op_node, dest_node))	
-	__add_dest_list__(dest_node, dest)
+	op_nodes.append(op_node)
+	dest_nodes.append(dest)
+	source1.append(src1)
+	source2.append(src2)
 
 def ADC(instruction, line_number, graph): #Add with carry
 	#"adc"
@@ -264,42 +207,10 @@ def ADC(instruction, line_number, graph): #Add with carry
 	src1 = instruction[2]
 	src2  = instruction[3]
 	op_node   = op   + str(line_number)
-	dest_node = dest + str(line_number)
-	src1_node = src1 + str(line_number)
-	src2_node  = src2 + str(line_number) 
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(op_node, op, op_shape))
-	if dest in temp_registers:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-	if ( __check_label__(instruction[2]) != 0): #If the src1 is plotted
-		i = __check_label__(instruction[2]) - 1 
-		s1 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s1, op_node))
-	else:
-		if src1 in temp_registers:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, temp_reg_shape))
-		else:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src1_node, op_node)) #Find a way to equate the previous node pointing to src1 in the list of destination nodes. 
-	if (__check_label__(instruction[3]) != 0): #If the src2 is plotted
-		i = __check_label__(instruction[3]) - 1
-		s2 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s2, op_node))
-	else:
-		if src2 in temp_registers:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, temp_reg_shape))
-		else:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src2_node, op_node))
-	if dest in temp_registers:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-		graph.write("\"%s\" -> \"%s\"[\"dir\" = \"none\"];\n" %(op_node, dest_node))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(op_node, dest_node))	
-	__add_dest_list__(dest_node, dest)
-	
+	op_nodes.append(op_node)
+	dest_nodes.append(dest)
+	source1.append(src1)
+	source2.append(src2)
 
 
 def ADCI(instruction, line_number, graph):  #Add immediate with carry
@@ -317,41 +228,10 @@ def ADCI(instruction, line_number, graph):  #Add immediate with carry
 	src1 = instruction[2]
 	src2  = instruction[3]
 	op_node   = op   + str(line_number)
-	dest_node = dest + str(line_number)
-	src1_node = src1 + str(line_number)
-	src2_node = src2  + str(line_number)
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(op_node, op, op_shape))
-	if dest in temp_registers:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-	if ( __check_label__(instruction[2]) != 0): #If the src1 is plotted
-		i = __check_label__(instruction[2]) - 1 
-		s1 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s1, op_node))
-	else:
-		if src1 in temp_registers:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, temp_reg_shape))
-		else:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src1_node, op_node)) #Find a way to equate the previous node pointing to src1 in the list of destination nodes. 
-	if (__check_label__(instruction[3]) != 0): #If the src2 is plotted
-		i = __check_label__(instruction[3]) - 1
-		s2 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s2, op_node))
-	else:
-		if src2 in temp_registers:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, temp_reg_shape))
-		else:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src2_node, op_node))
-	if dest in temp_registers:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-		graph.write("\"%s\" -> \"%s\"[\"dir\" = \"none\"];\n" %(op_node, dest_node))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(op_node, dest_node))	
-	__add_dest_list__(dest_node, dest)
+	op_nodes.append(op_node)
+	dest_nodes.append(dest)
+	source1.append(src1)
+	source2.append(src2)
 
 
 def   SUB(instruction, line_number, graph):
@@ -368,42 +248,10 @@ def   SUB(instruction, line_number, graph):
 	src1 = instruction[2]
 	src2  = instruction[3]
 	op_node = op + str(line_number)
-	dest_node = dest + str(line_number)
-	dest_node = dest + str(line_number)
-	src1_node = src1 + str(line_number)
-	src2_node = src2 + str(line_number)
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(op_node, op, op_shape))
-	if dest in temp_registers:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-	if ( __check_label__(instruction[2]) != 0): #If the src1 is plotted
-		i = __check_label__(instruction[2]) - 1 
-		s1 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s1, op_node))
-	else:
-		if src1 in temp_registers:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, temp_reg_shape))
-		else:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src1_node, op_node)) #Find a way to equate the previous node pointing to src1 in the list of destination nodes. 
-	if (__check_label__(instruction[3]) != 0): #If the src2 is plotted
-		i = __check_label__(instruction[3]) - 1
-		s2 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s2, op_node))
-	else:
-		if src2 in temp_registers:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, temp_reg_shape))
-		else:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src2_node, op_node))
-	if dest in temp_registers:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-		graph.write("\"%s\" -> \"%s\"[\"dir\" = \"none\"];\n" %(op_node, dest_node))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(op_node, dest_node))	
-	__add_dest_list__(dest_node, dest)
+	op_nodes.append(op_node)
+	dest_nodes.append(dest)
+	source1.append(src1)
+	source2.append(src2)
 	
 
 def  SUBI(instruction, line_number, graph):
@@ -421,41 +269,10 @@ def  SUBI(instruction, line_number, graph):
 	src1 = instruction[2]
 	src2 = instruction[3]
 	op_node = op + str(line_number)
-	dest_node = dest + str(line_number)
-	src1_node = src1 + str(line_number)
-	src2_node = src2 + str(line_number)
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(op_node, op, op_shape))
-	if dest in temp_registers:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-	if ( __check_label__(instruction[2]) != 0): #If the src1 is plotted
-		i = __check_label__(instruction[2]) - 1 
-		s1 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s1, op_node))
-	else:
-		if src1 in temp_registers:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, temp_reg_shape))
-		else:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src1_node, op_node)) #Find a way to equate the previous node pointing to src1 in the list of destination nodes. 
-	if (__check_label__(instruction[3]) != 0): #If the src2 is plotted
-		i = __check_label__(instruction[3]) - 1
-		s2 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s2, op_node))
-	else:
-		if src2 in temp_registers:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, temp_reg_shape))
-		else:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src2_node, op_node))
-	if dest in temp_registers:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-		graph.write("\"%s\" -> \"%s\"[\"dir\" = \"none\"];\n" %(op_node, dest_node))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(op_node, dest_node))	
-	__add_dest_list__(dest_node, dest)
+	op_nodes.append(op_node)
+	dest_nodes.append(dest)
+	source1.append(src1)
+	source2.append(src2)
 
 
 
@@ -473,41 +290,10 @@ def  MUL1S(instruction, line_number, graph):
 	src1 = instruction[2]
 	src2  = instruction[3]
 	op_node   = op   + str(line_number)
-	dest_node = dest + str(line_number)
-	src1_node = src1 + str(line_number)
-	src2_node  = src2 + str(line_number) 
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(op_node, op, op_shape))
-	if dest in temp_registers:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-	if ( __check_label__(instruction[2]) != 0): #If the src1 is plotted
-		i = __check_label__(instruction[2]) - 1 
-		s1 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s1, op_node))
-	else:
-		if src1 in temp_registers:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, temp_reg_shape))
-		else:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src1_node, op_node)) #Find a way to equate the previous node pointing to src1 in the list of destination nodes. 
-	if (__check_label__(instruction[3]) != 0): #If the src2 is plotted
-		i = __check_label__(instruction[3]) - 1
-		s2 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s2, op_node))
-	else:
-		if src2 in temp_registers:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, temp_reg_shape))
-		else:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src2_node, op_node))
-	if dest in temp_registers:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-		graph.write("\"%s\" -> \"%s\"[\"dir\" = \"none\"];\n" %(op_node, dest_node))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(op_node, dest_node))	
-	__add_dest_list__(dest_node, dest)
+	op_nodes.append(op_node)
+	dest_nodes.append(dest)
+	source1.append(src1)
+	source2.append(src2)
 
 def MUL1SI(instruction, line_number, graph):
 	#'addi'
@@ -525,41 +311,10 @@ def MUL1SI(instruction, line_number, graph):
 	src1 = instruction[2]
 	src2  = instruction[3]
 	op_node   = op   + str(line_number)
-	dest_node = dest + str(line_number)
-	src1_node = src1 + str(line_number)
-	src2_node  = imm  + str(line_number)
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(op_node, op, op_shape))
-	if dest in temp_registers:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-	if ( __check_label__(instruction[2]) != 0): #If the src1 is plotted
-		i = __check_label__(instruction[2]) - 1 
-		s1 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s1, op_node))
-	else:
-		if src1 in temp_registers:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, temp_reg_shape))
-		else:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src1_node, op_node)) #Find a way to equate the previous node pointing to src1 in the list of destination nodes. 
-	if (__check_label__(instruction[3]) != 0): #If the src2 is plotted
-		i = __check_label__(instruction[3]) - 1
-		s2 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s2, op_node))
-	else:
-		if src2 in temp_registers:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, temp_reg_shape))
-		else:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src2_node, op_node))
-	if dest in temp_registers:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-		graph.write("\"%s\" -> \"%s\"[\"dir\" = \"none\"];\n" %(op_node, dest_node))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(op_node, dest_node))	
-	__add_dest_list__(dest_node, dest)
+	op_nodes.append(op_node)
+	dest_nodes.append(dest)
+	source1.append(src1)
+	source2.append(src2)
 
 
 def MUL1U(instruction, line_number, graph):
@@ -576,41 +331,10 @@ def MUL1U(instruction, line_number, graph):
 	src1 = instruction[2]
 	src2  = instruction[3]
 	op_node   = op   + str(line_number)
-	dest_node = dest + str(line_number)
-	src1_node = src1 + str(line_number)
-	src2_node  = src2 + str(line_number) 
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(op_node, op, op_shape))
-	if dest in temp_registers:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-	if ( __check_label__(instruction[2]) != 0): #If the src1 is plotted
-		i = __check_label__(instruction[2]) - 1 
-		s1 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s1, op_node))
-	else:
-		if src1 in temp_registers:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, temp_reg_shape))
-		else:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src1_node, op_node)) #Find a way to equate the previous node pointing to src1 in the list of destination nodes. 
-	if (__check_label__(instruction[3]) != 0): #If the src2 is plotted
-		i = __check_label__(instruction[3]) - 1
-		s2 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s2, op_node))
-	else:
-		if src2 in temp_registers:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, temp_reg_shape))
-		else:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src2_node, op_node))
-	if dest in temp_registers:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-		graph.write("\"%s\" -> \"%s\"[\"dir\" = \"none\"];\n" %(op_node, dest_node))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(op_node, dest_node))	
-	__add_dest_list__(dest_node, dest)
+	op_nodes.append(op_node)
+	dest_nodes.append(dest)
+	source1.append(src1)
+	source2.append(src2)
 
 def MUL1UI(instruction, line_number, graph):
 	while '' in instruction:
@@ -627,21 +351,10 @@ def MUL1UI(instruction, line_number, graph):
 	src1 = instruction[2]
 	imm  = instruction[3]
 	op_node   = op   + str(line_number)
-	dest_node = dest + str(line_number)
-	src1_node = src1 + str(line_number)
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(op_node, op, op_shape))
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, reg_shape))
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(imm_node, imm, imm_shape))
-	if ( __check_label__(instruction[2]) != 0):
-		i = __check_label__ (instruction[2]) - 1
-		s1 = dest_nodes[i]
-		graph.write("\%s\" -> \"%s\";\n" %(s1, dest_node))
-	elif( __check_label__(instruction[2]) == 0):
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src1_node, op_node))
-	graph.write("\"%s\" -> \"%s\";\n" %(imm_node, op_node))
-	graph.write("\"%s\" -> \"%s\";\n" %(op_node, dest_node))
-	__add_dest_list__(dest_node, dest)
+	op_nodes.append(op_node)
+	dest_nodes.append(dest)
+	source1.append(src1)
+	source2.append(src2)
 
 def MULEL(instruction, line_number, graph):  #Dest = Dest <- ProdLo
 	while '' in instruction:
@@ -659,19 +372,10 @@ def MULEL(instruction, line_number, graph):  #Dest = Dest <- ProdLo
 	op_node   = op   + str(line_number)
 	dest_node = dest + str(line_number)
 	src1_node = src1 + str(line_number)
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(op_node, op, op_shape))
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, reg_shape))
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(imm_node, imm, imm_shape))
-	if ( __check_label__(instruction[2]) != 0):
-		i = __check_label__ (instruction[2]) - 1
-		s1 = dest_nodes[i]
-		graph.write("\%s\" -> \"%s\";\n" %(s1, dest_node))
-	elif( __check_label__(instruction[2]) == 0): 
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src1_node, op_node))
-	graph.write("\"%s\" -> \"%s\";\n" %(imm_node, op_node))
-	graph.write("\"%s\" -> \"%s\";\n" %(op_node, dest_node))
-	__add_dest_list__(dest_node, dest)
+	op_nodes.append(op_node)
+	dest_nodes.append(dest)
+	source1.append(src1)
+	source2.append(src2)
 	
 
 def MULEH(instruction, line_number, graph):  #Dest = Dest <- ProdHi
@@ -690,19 +394,10 @@ def MULEH(instruction, line_number, graph):  #Dest = Dest <- ProdHi
 	op_node   = op   + str(line_number)
 	dest_node = dest + str(line_number)
 	src1_node = src1 + str(line_number)
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(op_node, op, op_shape))
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, reg_shape))
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(imm_node, imm, imm_shape))
-	if ( __check_label__(instruction[2]) != 0):
-		i = __check_label__ (instruction[2]) - 1
-		s1 = dest_nodes[i]
-		graph.write("\%s\" -> \"%s\";\n" %(s1, dest_node))
-	elif( __check_label__(instruction[2]) == 0):
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src1_node, op_node))
-	graph.write("\"%s\" -> \"%s\";\n" %(imm_node, op_node))
-	graph.write("\"%s\" -> \"%s\";\n" %(op_node, dest_node))
-	__add_dest_list__(dest_node, dest)
+	op_nodes.append(op_node)
+	dest_nodes.append(dest)
+	source1.append(src1)
+	source2.append(src2)
 
 def DIV1(instruction, line_number, graph):
 	for item in instruction:
@@ -751,39 +446,11 @@ def OR(instruction, line_number, graph):
 	dest_node = dest + str(line_number)
 	src1_node = src1 + str(line_number)
 	src2_node = src2 + str(line_number)
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(op_node, op, op_shape))
-	
-	if dest in temp_registers:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-	if ( __check_label__(instruction[2]) != 0): #If the src1 is plotted
-		i = __check_label__(instruction[2]) - 1 
-		s1 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s1, op_node))
-	else:
-		if src1 in temp_registers:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, temp_reg_shape))
-		else:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src1_node, op_node)) #Find a way to equate the previous node pointing to src1 in the list of destination nodes. 
-	if (__check_label__(instruction[3]) != 0): #If the src2 is plotted
-		i = __check_label__(instruction[3]) - 1
-		s2 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s2, op_node))
-	else:
-		if src2 in temp_registers:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, temp_reg_shape))
-		else:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src2_node, op_node))
-	if dest in temp_registers:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-		graph.write("\"%s\" -> \"%s\"[\"dir\" = \"none\"];\n" %(op_node, dest_node))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(op_node, dest_node))	
-	__add_dest_list__(dest_node, dest)
+	op_nodes.append(op_node)
+	dest_nodes.append(dest)
+	source1.append(src1)
+	source2.append(src2)
+
 
 def ORI(instruction, line_number, graph):
 	while '' in instruction:
@@ -802,38 +469,10 @@ def ORI(instruction, line_number, graph):
 	dest_node = dest + str(line_number)
 	src1_node = src1 + str(line_number)
 	src2_node = src2 + str(line_number)
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(op_node, op, op_shape))
-	if dest in temp_registers:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-	if ( __check_label__(instruction[2]) != 0): #If the src1 is plotted
-		i = __check_label__(instruction[2]) - 1 
-		s1 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s1, op_node))
-	else:
-		if src1 in temp_registers:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, temp_reg_shape))
-		else:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src1_node, op_node)) #Find a way to equate the previous node pointing to src1 in the list of destination nodes. 
-	if (__check_label__(instruction[3]) != 0): #If the src2 is plotted
-		i = __check_label__(instruction[3]) - 1
-		s2 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s2, op_node))
-	else:
-		if src2 in temp_registers:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, temp_reg_shape))
-		else:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src2_node, op_node))
-	if dest in temp_registers:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-		graph.write("\"%s\" -> \"%s\"[\"dir\" = \"none\"];\n" %(op_node, dest_node))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(op_node, dest_node))	
-	__add_dest_list__(dest_node, dest)
+	op_nodes.append(op_node)
+	dest_nodes.append(dest)
+	source1.append(src1)
+	source2.append(src2)
 
 
 def XOR(instruction, line_number, graph):
@@ -853,38 +492,10 @@ def XOR(instruction, line_number, graph):
 	dest_node = dest + str(line_number)
 	src1_node = src1 + str(line_number)
 	src2_node = src2 + str(line_number)
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(op_node, op, op_shape))
-	if dest in temp_registers:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-	if ( __check_label__(instruction[2]) != 0): #If the src1 is plotted
-		i = __check_label__(instruction[2]) - 1 
-		s1 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s1, op_node))
-	else:
-		if src1 in temp_registers:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, temp_reg_shape))
-		else:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src1_node, op_node)) #Find a way to equate the previous node pointing to src1 in the list of destination nodes. 
-	if (__check_label__(instruction[3]) != 0): #If the src2 is plotted
-		i = __check_label__(instruction[3]) - 1
-		s2 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s2, op_node))
-	else:
-		if src2 in temp_registers:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, temp_reg_shape))
-		else:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src2_node, op_node))
-	if dest in temp_registers:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-		graph.write("\"%s\" -> \"%s\"[\"dir\" = \"none\"];\n" %(op_node, dest_node))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(op_node, dest_node))	
-	__add_dest_list__(dest_node, dest)
+	op_nodes.append(op_node)
+	dest_nodes.append(dest)
+	source1.append(src1)
+	source2.append(src2)
 
 def MXOR(instruction, line_number, graph):
 	while '' in instruction:
@@ -904,37 +515,11 @@ def MXOR(instruction, line_number, graph):
 	src1_node = src1 + str(line_number)
 	src2_node = src2 + str(line_number)
 	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(op_node, op, op_shape))
-	if dest in temp_registers:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-	if ( __check_label__(instruction[2]) != 0): #If the src1 is plotted
-		i = __check_label__(instruction[2]) - 1 
-		s1 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s1, op_node))
-	else:
-		if src1 in temp_registers:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, temp_reg_shape))
-		else:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src1_node, op_node)) #Find a way to equate the previous node pointing to src1 in the list of destination nodes. 
-	if (__check_label__(instruction[3]) != 0): #If the src2 is plotted
-		i = __check_label__(instruction[3]) - 1
-		s2 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s2, op_node))
-	else:
-		if src2 in temp_registers:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, temp_reg_shape))
-		else:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src2_node, op_node))
-	if dest in temp_registers:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-		graph.write("\"%s\" -> \"%s\"[\"dir\" = \"none\"];\n" %(op_node, dest_node))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(op_node, dest_node))	
-	__add_dest_list__(dest_node, dest)
+	op_nodes.append(op_node)
+	dest_nodes.append(dest)
+	source1.append(src1)
+	source2.append(src2)
+
 
 def XORI(instruction, line_number, graph):
 	while '' in instruction:
@@ -953,38 +538,10 @@ def XORI(instruction, line_number, graph):
 	dest_node = dest + str(line_number)
 	src1_node = src1 + str(line_number)
 	src2_node = src2 + str(line_number)
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(op_node, op, op_shape))
-	if dest in temp_registers:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-	if ( __check_label__(instruction[2]) != 0): #If the src1 is plotted
-		i = __check_label__(instruction[2]) - 1 
-		s1 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s1, op_node))
-	else:
-		if src1 in temp_registers:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, temp_reg_shape))
-		else:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src1_node, op_node)) #Find a way to equate the previous node pointing to src1 in the list of destination nodes. 
-	if (__check_label__(instruction[3]) != 0): #If the src2 is plotted
-		i = __check_label__(instruction[3]) - 1
-		s2 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s2, op_node))
-	else:
-		if src2 in temp_registers:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, temp_reg_shape))
-		else:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src2_node, op_node))
-	if dest in temp_registers:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-		graph.write("\"%s\" -> \"%s\"[\"dir\" = \"none\"];\n" %(op_node, dest_node))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(op_node, dest_node))	
-	__add_dest_list__(dest_node, dest)
+	op_nodes.append(op_node)
+	dest_nodes.append(dest)
+	source1.append(src1)
+	source2.append(src2)
 
 def AND(instruction, line_number, graph): #logical and operator
 	#and
@@ -1005,37 +562,10 @@ def AND(instruction, line_number, graph): #logical and operator
 	src1_node = src1 + str(line_number)
 	src2_node  = src2 + str(line_number) 
 	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(op_node, op, op_shape))
-	if dest in temp_registers:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-	if ( __check_label__(instruction[2]) != 0): #If the src1 is plotted
-		i = __check_label__(instruction[2]) - 1 
-		s1 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s1, op_node))
-	else:
-		if src1 in temp_registers:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, temp_reg_shape))
-		else:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src1_node, op_node)) #Find a way to equate the previous node pointing to src1 in the list of destination nodes. 
-	if (__check_label__(instruction[3]) != 0): #If the src2 is plotted
-		i = __check_label__(instruction[3]) - 1
-		s2 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s2, op_node))
-	else:
-		if src2 in temp_registers:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, temp_reg_shape))
-		else:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src2_node, op_node))
-	if dest in temp_registers:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-		graph.write("\"%s\" -> \"%s\"[\"dir\" = \"none\"];\n" %(op_node, dest_node))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(op_node, dest_node))	
-	__add_dest_list__(dest_node, dest)
+	op_nodes.append(op_node)
+	dest_nodes.append(dest)
+	source1.append(src1)
+	source2.append(src2)
 
 
 def ANDI(instruction, line_number, graph): #Logical and immediate operator
@@ -1058,37 +588,10 @@ def ANDI(instruction, line_number, graph): #Logical and immediate operator
 	src1_node = src1 + str(line_number)
 	src2_node  = imm  + str(line_number) 
 	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(op_node, op, op_shape))
-	if dest in temp_registers:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-	if ( __check_label__(instruction[2]) != 0): #If the src1 is plotted
-		i = __check_label__(instruction[2]) - 1 
-		s1 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s1, op_node))
-	else:
-		if src1 in temp_registers:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, temp_reg_shape))
-		else:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src1_node, op_node)) #Find a way to equate the previous node pointing to src1 in the list of destination nodes. 
-	if (__check_label__(instruction[3]) != 0): #If the src2 is plotted
-		i = __check_label__(instruction[3]) - 1
-		s2 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s2, op_node))
-	else:
-		if src2 in temp_registers:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, temp_reg_shape))
-		else:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src2_node, op_node))
-	if dest in temp_registers:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-		graph.write("\"%s\" -> \"%s\"[\"dir\" = \"none\"];\n" %(op_node, dest_node))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(op_node, dest_node))	
-	__add_dest_list__(dest_node, dest)
+	op_nodes.append(op_node)
+	dest_nodes.append(dest)
+	source1.append(src1)
+	source2.append(src2)
 
 ## operands operators
 def SLL(instruction, line_number, graph):
@@ -1109,37 +612,10 @@ def SLL(instruction, line_number, graph):
 	src1_node = src1 + str(line_number)
 	src2_node  = src2 + str(line_number) 
 	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(op_node, op, op_shape))
-	if dest in temp_registers:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-	if ( __check_label__(instruction[2]) != 0): #If the src1 is plotted
-		i = __check_label__(instruction[2]) - 1 
-		s1 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s1, op_node))
-	else:
-		if src1 in temp_registers:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, temp_reg_shape))
-		else:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src1_node, op_node)) #Find a way to equate the previous node pointing to src1 in the list of destination nodes. 
-	if (__check_label__(instruction[3]) != 0): #If the src2 is plotted
-		i = __check_label__(instruction[3]) - 1
-		s2 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s2, op_node))
-	else:
-		if src2 in temp_registers:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, temp_reg_shape))
-		else:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src2_node, op_node))
-	if dest in temp_registers:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-		graph.write("\"%s\" -> \"%s\"[\"dir\" = \"none\"];\n" %(op_node, dest_node))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(op_node, dest_node))	
-	__add_dest_list__(dest_node, dest)
+	op_nodes.append(op_node)
+	dest_nodes.append(dest)
+	source1.append(src1)
+	source2.append(src2)
 
 def SLLI(instruction, line_number, graph):
 	while '' in instruction:
@@ -1159,38 +635,10 @@ def SLLI(instruction, line_number, graph):
 	dest_node = dest + str(line_number)
 	src1_node = src1 + str(line_number)
 	src2_node  = src2 + str(line_number) 
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(op_node, op, op_shape))
-	if dest in temp_registers:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-	if ( __check_label__(instruction[2]) != 0): #If the src1 is plotted
-		i = __check_label__(instruction[2]) - 1 
-		s1 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s1, op_node))
-	else:
-		if src1 in temp_registers:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, temp_reg_shape))
-		else:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src1_node, op_node)) #Find a way to equate the previous node pointing to src1 in the list of destination nodes. 
-	if (__check_label__(instruction[3]) != 0): #If the src2 is plotted
-		i = __check_label__(instruction[3]) - 1
-		s2 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s2, op_node))
-	else:
-		if src2 in temp_registers:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, temp_reg_shape))
-		else:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src2_node, op_node))
-	if dest in temp_registers:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-		graph.write("\"%s\" -> \"%s\"[\"dir\" = \"none\"];\n" %(op_node, dest_node))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(op_node, dest_node))	
-	__add_dest_list__(dest_node, dest)
+	op_nodes.append(op_node)
+	dest_nodes.append(dest)
+	source1.append(src1)
+	source2.append(src2)
 
 def SRL(instruction, line_number, graph):
 	while '' in instruction:
@@ -1209,38 +657,10 @@ def SRL(instruction, line_number, graph):
 	dest_node = dest + str(line_number)
 	src1_node = src1 + str(line_number)
 	src2_node  = src2 + str(line_number) 
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(op_node, op, op_shape))
-	if dest in temp_registers:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-	if ( __check_label__(instruction[2]) != 0): #If the src1 is plotted
-		i = __check_label__(instruction[2]) - 1 
-		s1 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s1, op_node))
-	else:
-		if src1 in temp_registers:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, temp_reg_shape))
-		else:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src1_node, op_node)) #Find a way to equate the previous node pointing to src1 in the list of destination nodes. 
-	if (__check_label__(instruction[3]) != 0): #If the src2 is plotted
-		i = __check_label__(instruction[3]) - 1
-		s2 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s2, op_node))
-	else:
-		if src2 in temp_registers:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, temp_reg_shape))
-		else:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src2_node, op_node))
-	if dest in temp_registers:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-		graph.write("\"%s\" -> \"%s\"[\"dir\" = \"none\"];\n" %(op_node, dest_node))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(op_node, dest_node))	
-	__add_dest_list__(dest_node, dest)
+	op_nodes.append(op_node)
+	dest_nodes.append(dest)
+	source1.append(src1)
+	source2.append(src2)
 
 
 def SRLI(instruction, line_number, graph):
@@ -1261,38 +681,10 @@ def SRLI(instruction, line_number, graph):
 	dest_node = dest + str(line_number)
 	src1_node = src1 + str(line_number)
 	src2_node  = src2 + str(line_number) 
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(op_node, op, op_shape))
-	if dest in temp_registers:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-	if ( __check_label__(instruction[2]) != 0): #If the src1 is plotted
-		i = __check_label__(instruction[2]) - 1 
-		s1 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s1, op_node))
-	else:
-		if src1 in temp_registers:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, temp_reg_shape))
-		else:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src1_node, op_node)) #Find a way to equate the previous node pointing to src1 in the list of destination nodes. 
-	if (__check_label__(instruction[3]) != 0): #If the src2 is plotted
-		i = __check_label__(instruction[3]) - 1
-		s2 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s2, op_node))
-	else:
-		if src2 in temp_registers:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, temp_reg_shape))
-		else:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src2_node, op_node))
-	if dest in temp_registers:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-		graph.write("\"%s\" -> \"%s\"[\"dir\" = \"none\"];\n" %(op_node, dest_node))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(op_node, dest_node))	
-	__add_dest_list__(dest_node, dest)
+	op_nodes.append(op_node)
+	dest_nodes.append(dest)
+	source1.append(src1)
+	source2.append(src2)
 
 
 def SRA(instruction, line_number, graph):
@@ -1312,38 +704,10 @@ def SRA(instruction, line_number, graph):
 	dest_node = dest + str(line_number)
 	src1_node = src1 + str(line_number)
 	src2_node  = src2 + str(line_number) 
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(op_node, op, op_shape))
-	if dest in temp_registers:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-	if ( __check_label__(instruction[2]) != 0): #If the src1 is plotted
-		i = __check_label__(instruction[2]) - 1 
-		s1 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s1, op_node))
-	else:
-		if src1 in temp_registers:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, temp_reg_shape))
-		else:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src1_node, op_node)) #Find a way to equate the previous node pointing to src1 in the list of destination nodes. 
-	if (__check_label__(instruction[3]) != 0): #If the src2 is plotted
-		i = __check_label__(instruction[3]) - 1
-		s2 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s2, op_node))
-	else:
-		if src2 in temp_registers:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, temp_reg_shape))
-		else:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src2_node, op_node))
-	if dest in temp_registers:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-		graph.write("\"%s\" -> \"%s\"[\"dir\" = \"none\"];\n" %(op_node, dest_node))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(op_node, dest_node))	
-	__add_dest_list__(dest_node, dest)
+	op_nodes.append(op_node)
+	dest_nodes.append(dest)
+	source1.append(src1)
+	source2.append(src2)
 
 
 
@@ -1365,38 +729,10 @@ def SRAI(instruction, line_number, graph):
 	dest_node = dest + str(line_number)
 	src1_node = src1 + str(line_number)
 	src2_node  = src2 + str(line_number) 
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(op_node, op, op_shape))
-	if dest in temp_registers:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-	if ( __check_label__(instruction[2]) != 0): #If the src1 is plotted
-		i = __check_label__(instruction[2]) - 1 
-		s1 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s1, op_node))
-	else:
-		if src1 in temp_registers:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, temp_reg_shape))
-		else:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src1_node, op_node)) #Find a way to equate the previous node pointing to src1 in the list of destination nodes. 
-	if (__check_label__(instruction[3]) != 0): #If the src2 is plotted
-		i = __check_label__(instruction[3]) - 1
-		s2 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s2, op_node))
-	else:
-		if src2 in temp_registers:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, temp_reg_shape))
-		else:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src2_node, op_node))
-	if dest in temp_registers:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-		graph.write("\"%s\" -> \"%s\"[\"dir\" = \"none\"];\n" %(op_node, dest_node))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(op_node, dest_node))	
-	__add_dest_list__(dest_node, dest)
+	op_nodes.append(op_node)
+	dest_nodes.append(dest)
+	source1.append(src1)
+	source2.append(src2)
 
 
 
@@ -1417,38 +753,10 @@ def ROR(instruction, line_number, graph):
 	dest_node = dest + str(line_number)
 	src1_node = src1 + str(line_number)
 	src2_node  = src2 + str(line_number) 
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(op_node, op, op_shape))
-	if dest in temp_registers:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-	if ( __check_label__(instruction[2]) != 0): #If the src1 is plotted
-		i = __check_label__(instruction[2]) - 1 
-		s1 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s1, op_node))
-	else:
-		if src1 in temp_registers:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, temp_reg_shape))
-		else:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src1_node, op_node)) #Find a way to equate the previous node pointing to src1 in the list of destination nodes. 
-	if (__check_label__(instruction[3]) != 0): #If the src2 is plotted
-		i = __check_label__(instruction[3]) - 1
-		s2 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s2, op_node))
-	else:
-		if src2 in temp_registers:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, temp_reg_shape))
-		else:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src2_node, op_node))
-	if dest in temp_registers:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-		graph.write("\"%s\" -> \"%s\"[\"dir\" = \"none\"];\n" %(op_node, dest_node))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(op_node, dest_node))	
-	__add_dest_list__(dest_node, dest)
+	op_nodes.append(op_node)
+	dest_nodes.append(dest)
+	source1.append(src1)
+	source2.append(src2)
 
 
 
@@ -1470,38 +778,10 @@ def RORI(instruction, line_number, graph):
 	dest_node = dest + str(line_number)
 	src1_node = src1 + str(line_number)
 	src2_node  = src2 + str(line_number) 
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(op_node, op, op_shape))
-	if dest in temp_registers:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-	if ( __check_label__(instruction[2]) != 0): #If the src1 is plotted
-		i = __check_label__(instruction[2]) - 1 
-		s1 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s1, op_node))
-	else:
-		if src1 in temp_registers:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, temp_reg_shape))
-		else:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src1_node, op_node)) #Find a way to equate the previous node pointing to src1 in the list of destination nodes. 
-	if (__check_label__(instruction[3]) != 0): #If the src2 is plotted
-		i = __check_label__(instruction[3]) - 1
-		s2 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s2, op_node))
-	else:
-		if src2 in temp_registers:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, temp_reg_shape))
-		else:
-			graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src2_node, op_node))
-	if dest in temp_registers:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, temp_reg_shape))
-		graph.write("\"%s\" -> \"%s\"[\"dir\" = \"none\"];\n" %(op_node, dest_node))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(op_node, dest_node))	
-	__add_dest_list__(dest_node, dest)
+	op_nodes.append(op_node)
+	dest_nodes.append(dest)
+	source1.append(src1)
+	source2.append(src2)
 
 
 def RCR(instruction, line_number, graph):
@@ -1521,14 +801,10 @@ def RCR(instruction, line_number, graph):
 	dest_node = dest + str(line_number)
 	src1_node = src1 + str(line_number)
 	src2_node  = src2 + str(line_number) 
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(op_node, op, op_shape))
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, reg_shape))
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, reg_shape))
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, reg_shape))
-	graph.write("\"%s\" -> \"%s\";\n" %(src1_node, op_node))
-	graph.write("\"%s\" -> \"%s\";\n" %(src2_node, op_node))
-	graph.write("\"%s\" -> \"%s\";\n" %(op_node, dest_node))
-	__add_dest_list__(dest_node, dest)
+	op_nodes.append(op_node)
+	dest_nodes.append(dest)
+	source1.append(src1)
+	source2.append(src2)
 
 
 def RCRI(instruction, line_number, graph):
@@ -1549,14 +825,10 @@ def RCRI(instruction, line_number, graph):
 	dest_node = dest + str(line_number)
 	src1_node = src1 + str(line_number)
 	imm_node  = src2 + str(line_number) 
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(op_node, op, op_shape))
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, reg_shape))
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, reg_shape))
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(imm_node, src2, imm_shape))
-	graph.write("\"%s\" -> \"%s\";\n" %(src1_node, op_node))
-	graph.write("\"%s\" -> \"%s\";\n" %(imm_node, op_node))
-	graph.write("\"%s\" -> \"%s\";\n" %(op_node, dest_node))
-	__add_dest_list__(dest_node, dest)
+	op_nodes.append(op_node)
+	dest_nodes.append(dest)
+	source1.append(src1)
+	source2.append(src2)
 
 
 def ROL(instruction, line_number, graph):
@@ -1576,27 +848,10 @@ def ROL(instruction, line_number, graph):
 	dest_node = dest + str(line_number)
 	src1_node = src1 + str(line_number)
 	src2_node  = src2 + str(line_number) 
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(op_node, op, op_shape))
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, reg_shape))
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, reg_shape))
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, reg_shape))
-	if (__check_label__(instruction[2] != 0)):
-		i = (__check_label__(instruction[2])) - 1
-		s1 = dest_nodes[i]
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"]; \n" %(s1, op_node) )
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src1_node, op_node))
-
-	if (__check_label__(instruction[3] != 0)):
-		i = (__check_label__(instruction[2])) - 1
-		s2 = dest_nodes[i]
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"]; \n" %(s2, op_node) )
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src2_node, op_node))
-	graph.write("\"%s\" -> \"%s\";\n" %(op_node, dest_node))
-	__add_dest_list__(dest_node, dest)
+	op_nodes.append(op_node)
+	dest_nodes.append(dest)
+	source1.append(src1)
+	source2.append(src2)
 
 
 def ROLI(instruction, line_number, graph):
@@ -1617,25 +872,10 @@ def ROLI(instruction, line_number, graph):
 	dest_node = dest + str(line_number)
 	src1_node = src1 + str(line_number)
 	imm_node  = imm + str(line_number) 
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(op_node, op, op_shape))
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, reg_shape))
-
-	if (__check_label__(instruction[2]) != 0):
-		i = (__check_label__(instruction[2])) - 1
-		s1 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\" "%(s1, op_node))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src1_node, op_node))
-	if (__check_label__(instruction[3]) != 0):
-		i = (__check_label__(instruction[3])) - 1
-		immediate = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\"" %(immediate, op_node))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(imm_node, imm, imm_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(imm_node, op_node))
-	graph.write("\"%s\" -> \"%s\";\n" %(op_node, dest_node))
-	__add_dest_list__(dest_node, dest)
+	op_nodes.append(op_node)
+	dest_nodes.append(dest)
+	source1.append(src1)
+	source2.append(src2)
 
 
 def RCL (instruction, line_number, graph):
@@ -1655,24 +895,10 @@ def RCL (instruction, line_number, graph):
 	dest_node = dest + str(line_number)
 	src1_node = src1 + str(line_number)
 	src2_node  = src2 + str(line_number) 
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(op_node, op, op_shape))
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, reg_shape))
-	if (__check_label__(instruction[2]) != 0):
-		i = __check_label__(instruction[2]) - 1
-		s1 = dest_nodes[2]
-		graph.write("\"%s\" -> \"%s\";\n" %(s1, op_node))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src1_node, op_node))
-	if(__check_label__(instruction[3]) != 0):
-		i = __check_label__(instruction[3]) - 1
-		s2 = dest_nodes[3]
-		graph.write("\"%s\" -> \"%s\";\n" %(s2, op_node))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src2_node, op_node))
-	graph.write("\"%s\" -> \"%s\";\n" %(op_node, dest_node))
-	__add_dest_list__(dest_node, dest)
+	op_nodes.append(op_node)
+	dest_nodes.append(dest)
+	source1.append(src1)
+	source2.append(src2)
 
 
 def RCLI (instruction, line_number, graph):
@@ -1693,24 +919,10 @@ def RCLI (instruction, line_number, graph):
 	dest_node = dest + str(line_number)
 	src1_node = src1 + str(line_number)
 	imm_node  = src2 + str(line_number) 
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(op_node, op, op_shape))
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, reg_shape))
-	if (__check_label__(instruction[2]) != 0):
-		i = __check_label__(instruction[2]) - 1
-		s1 = dest_nodes[2]
-		graph.write("\"%s\" -> \"%s\";\n" %(s1, op_node))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src1_node, op_node))
-	if (__check_label__(instruction[3]) != 0):
-		i = __check_label__(instruction[3]) - 1
-		immediate = dest_nodes[3]
-		graph.write("\"%s\" -> \"%s\";\n " %(immediate, op_node))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(imm_node, imm, imm_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(imm_node, op_node))
-	graph.write("\"%s\" -> \"%s\";\n" %(op_node, dest_node))
-	__add_dest_list__(dest_node, dest)
+	op_nodes.append(op_node)
+	dest_nodes.append(dest)
+	source1.append(src1)
+	source2.append(src2)
 
 def MOV (instruction, line_number, graph):  # dest = src1 <- src2
 	#mov dest, src1, src2  ==> dest = src1 <- src2 ==> merge contents of src1 and src2 and store in destination address. 
@@ -1730,24 +942,10 @@ def MOV (instruction, line_number, graph):  # dest = src1 <- src2
 	dest_node = dest + str(line_number)
 	src1_node = src1 + str(line_number)
 	src2_node  = src2 + str(line_number)
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(op_node, op, op_shape))
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, reg_shape))
-	if (__check_label__(instruction[2]) != 0):
-		i = __check_label__(instruction[2]) - 1
-		s1 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %(s1, op_node))
-	else: 
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n "%(src1_node, op_node))
-	if ( __check_label__(instruction[3])  != 0):
-		i = __check_label__(instruction[3]) - 1
-		s2 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n "%(s2, op_node))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src2, op_node))
-	graph.write("\"%s\"   -> \"%s\";\n" %( op_node, dest_node))
-	__add_dest_list__(dest_node, dest)
+	op_nodes.append(op_node)
+	dest_nodes.append(dest)
+	source1.append(src1)
+	source2.append(src2)
 
 def MOVSIGN(instruction, line_number, graph):
 	#mov dest, src1, src2  ==> dest = src1 <- src2 ==> merge contents of src1 and src2 and store in destination address. 
@@ -1767,24 +965,10 @@ def MOVSIGN(instruction, line_number, graph):
 	dest_node = dest + str(line_number)
 	src1_node = src1 + str(line_number)
 	src2_node  = src2 + str(line_number) 
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(op_node, op, op_shape))
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, reg_shape))
-	if (__check_label__(instruction[2]) != 0):
-		i = __check_label__(instruction[2]) - 1
-		s1 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %(s1, op_node))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n"%(src1_node, op_shape))
-	if ( __check_label__(instruction[3]) != 0):
-		i = __check_label__(instruction[3]) -1
-		s2 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\"" %(s2, op_node))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n "%(src2_node, op_node))
-	graph.write("\"%s\"   -> \"%s\";\n" %(op_node, dest_node))
-	__add_dest_list__(dest_node, dest)
+op_nodes.append(op_node)
+	dest_nodes.append(dest)
+	source1.append(src1)
+	source2.append(src2)
 
 def MCMPI2R(instruction, line_number, graph):
 	#mov dest, src1, src2  ==> dest = src1 <- src2 ==> merge contents of src1 and src2 and store in destination address. 
@@ -1804,24 +988,10 @@ def MCMPI2R(instruction, line_number, graph):
 	dest_node = dest + str(line_number)
 	src1_node = src1 + str(line_number)
 	src2_node  = src2 + str(line_number) 
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(op_node, op, op_shape))
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, reg_shape))
-	if (__check_label__(instruction[2]) != 0):
-		i = __check_label__(instruction[2]) - 1
-		s1 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %(s1, op_node))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n"%(src1_node, op_shape))
-	if ( __check_label__(instruction[3]) != 0):
-		i = __check_label__(instruction[3]) -1
-		s2 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\"" %(s2, op_node))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n "%(src2_node, op_node))
-	graph.write("\"%s\"   -> \"%s\";\n" %(op_node, dest_node))
-	__add_dest_list__(dest_node, dest)
+	op_nodes.append(op_node)
+	dest_nodes.append(dest)
+	source1.append(src1)
+	source2.append(src2)
 
 
 def MOVI (instruction, line_number, graph): #dest = src1 <- imm
@@ -1842,24 +1012,10 @@ def MOVI (instruction, line_number, graph): #dest = src1 <- imm
 	dest_node = dest + str(line_number)
 	src1_node = src1 + str(line_number)
 	imm_node  = imm + str(line_number) 
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(op_node, op, op_shape))
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, reg_shape))
-	if (__check_label__(instruction[2]) != 0):
-		i = __check_label__(instruction[2]) - 1
-		s1 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %(s1, op_node))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n"%(src1_node, op_shape))
-	if ( __check_label__(instruction[3]) != 0):
-		i = __check_label__(instruction[3]) -1
-		immediate = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\"" %(immediate, op_node))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(imm_node, imm, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n "%(imm_node, op_node))
-	graph.write("\"%s\"   -> \"%s\";\n" %(op_node, dest_node))
-	__add_dest_list__(dest_node, dest)
+	op_nodes.append(op_node)
+	dest_nodes.append(dest)
+	source1.append(src1)
+	source2.append(src2)
 
 
 def SEXT (instruction, line_number, graph):
@@ -1881,26 +1037,10 @@ def SEXT (instruction, line_number, graph):
 	dest_node = dest + str(line_number)
 	src1_node = src1 + str(line_number)
 	src2_node  = src2 + str(line_number) 
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(op_node, op, op_shape))
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, reg_shape))
-	if ( __check_label__(instruction[2]) != 0): #If the src1 is plotted
-		i = __check_label__(instruction[2]) - 1 
-		s1 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s1, op_node))
-	else:
-		#graph.write("\"%s\" -> \"%s\";\n" %(src1_node, op_node))
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src1_node, op_node))
-	if (__check_label__(instruction[3]) != 0): #If the src2 is plotted
-		i = __check_label__(instruction[3]) - 1
-		s2 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s2, op_node))
-	else:
-		#graph.write("\"%s\" -> \"%s\";\n" %(src1_node, op_node))
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, reg_shape))	
-		graph.write("\"%s\" -> \"%s\";\n" %(src2_node, op_node))
-	graph.write("\"%s\" -> \"%s\";\n" %(op_node, dest_node))
-	__add_dest_list__(dest_node, dest)
+	op_nodes.append(op_node)
+	dest_nodes.append(dest)
+	source1.append(src1)
+	source2.append(src2)
 
 def SEXTI (instruction, line_number, graph):
 	while '' in instruction:
@@ -1920,24 +1060,10 @@ def SEXTI (instruction, line_number, graph):
 	dest_node = dest + str(line_number)
 	src1_node = src1 + str(line_number)
 	imm_node  = imm + str(line_number) 
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(op_node, op, op_shape))
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, reg_shape))
-	if (__check_label__(instruction[2]) != 0):
-		i = __check_label__(instruction[2]) - 1
-		s1 = dest_nodes[i]
-		graph.write("\"%s\" ->  \"%s\";\n"%(s1, op_node))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, reg_shape))
-		graph.write("\"%s\" -> \"%s\" " %(src1_node, op_node))
-	if (__check_label__(instruction[3]) != 0):
-		i = __check_label__(instruction[3] - 1)
-		s2 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n "%(s2, op_node))
-	else:
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(imm_node, imm, imm_shape))
-		graph.write("\"%s\" -> \"%s\" " %(imm_node, op_node))
-	graph.write("\"%s\" -> \"%s\";\n" %(op_node, dest_node))
-	__add_dest_list__(dest_node, dest)
+	op_nodes.append(op_node)
+	dest_nodes.append(dest)
+	source1.append(src1)
+	source2.append(src2)
 
 	
 
@@ -1959,26 +1085,10 @@ def ZEXT(instruction, line_number, graph):
 	dest_node = dest + str(line_number)
 	src1_node = src1 + str(line_number)
 	src2_node  = src2 + str(line_number) 
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(op_node, op, op_shape))
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, reg_shape))
-	if ( __check_label__(instruction[2]) != 0): #If the src1 is plotted
-		i = __check_label__(instruction[2]) - 1 
-		s1 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s1, op_node))
-	else:
-		#graph.write("\"%s\" -> \"%s\";\n" %(src1_node, op_node))
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src1_node, op_node))
-	if (__check_label__(instruction[3]) != 0): #If the src2 is plotted
-		i = __check_label__(instruction[3]) - 1
-		s2 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s2, op_node))
-	else:
-		#graph.write("\"%s\" -> \"%s\";\n" %(src1_node, op_node))
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, reg_shape))	
-		graph.write("\"%s\" -> \"%s\";\n" %(src2_node, op_node))
-	graph.write("\"%s\" -> \"%s\";\n" %(op_node, dest_node))
-	__add_dest_list__(dest_node, dest)
+	op_nodes.append(op_node)
+	dest_nodes.append(dest)
+	source1.append(src1)
+	source2.append(src2)
 
 
 def ZEXTI(instruction, line_number, graph):
@@ -2000,26 +1110,10 @@ def ZEXTI(instruction, line_number, graph):
 	src1_node = src1 + str(line_number)
 	src2_node  = src2 + str(line_number) 
 	zext_node = zext + str(line_number)
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(op_node, op, op_shape))
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, reg_shape))
-	if ( __check_label__(instruction[2]) != 0): #If the src1 is plotted
-		i = __check_label__(instruction[2]) - 1 
-		s1 = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( s1, op_node))
-	else:
-		#graph.write("\"%s\" -> \"%s\";\n" %(src1_node, op_node))
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src1_node, src1, reg_shape))
-		graph.write("\"%s\" -> \"%s\";\n" %(src1_node, op_node))
-	if (__check_label__(instruction[3]) != 0): #If the src2 is plotted
-		i = __check_label__(instruction[3]) - 1
-		immediate = dest_nodes[i]
-		graph.write("\"%s\" -> \"%s\";\n" %( immediate, op_node))
-	else:
-		#graph.write("\"%s\" -> \"%s\";\n" %(src1_node, op_node))
-		graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(src2_node, src2, reg_shape))	
-		graph.write("\"%s\" -> \"%s\";\n" %(src2_node, op_node))
-	graph.write("\"%s\" -> \"%s\";\n" %(op_node, dest_node))
-	__add_dest_list__(dest_node, dest)
+	op_nodes.append(op_node)
+	dest_nodes.append(dest)
+	source1.append(src1)
+	source2.append(src2)
 	
 def RUFLAG(instruction, line_number, graph): #
 	#Reads the user level flag stored in the bit position specified by the immediate Imm and stores it in the register Dest. 
@@ -2038,11 +1132,10 @@ def RUFLAG(instruction, line_number, graph): #
 	op_node = op + str(line_number)
 	dest_node = dest + str(line_number)
 	imm_node = imm + str(line_number)
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(op_node, op, op_shape))
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, reg_shape))
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(imm_node, imm, reg_shape))
-	graph.write("\"%s\" -> \"%s\";\n" %(imm_node, dest_node))
-	__add_dest_list__(dest_node, dest)
+	op_nodes.append(op_node)
+	dest_nodes.append(dest)
+	source1.append(src1)
+	source2.append(src2)
 
 def RUFLAGS(instruction, line_number, graph): #Suspend for now
 	#Read all user flags. 
@@ -2061,11 +1154,10 @@ def RUFLAGS(instruction, line_number, graph): #Suspend for now
 	op_node = op + str(line_number)
 	dest_node = dest + str(line_number)
 	imm_node = imm + str(line_number)
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(op_node, op, op_shape))
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, reg_shape))
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(imm_node, imm, reg_shape))
-	graph.write("\"%s\" -> \"%s\";\n" %(imm_node, dest_node))
-	__add_dest_list__(dest_node, dest)
+	op_nodes.append(op_node)
+	dest_nodes.append(dest)
+	source1.append(src1)
+	source2.append(src2)
 
 def WRUFLAGS(instruction, line_number, graph):
 	#Set the user level flags to the exclusive or of the Src1 and Src2 registers. 
@@ -2085,11 +1177,10 @@ def WRUFLAGS(instruction, line_number, graph):
 	op_node = op + str(line_number)
 	dest_node = dest + str(line_number)
 	imm_node = imm + str(line_number)
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(op_node, op, op_shape))
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, reg_shape))
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(imm_node, imm, reg_shape))
-	graph.write("\"%s\" -> \"%s\";\n" %(imm_node, dest_node))
-	__add_dest_list__(dest_node, dest)
+	op_nodes.append(op_node)
+	dest_nodes.append(dest)
+	source1.append(src1)
+	source2.append(src2)
 
 def MOV2FP(instruction, line_number, graph):
 	while '' in instruction:
@@ -2102,15 +1193,13 @@ def MOV2FP(instruction, line_number, graph):
 	reg_shape = "circle"
 	op = instruction[0]
 	dest = instruction[1]
-	source = instruction[2]
+	src1 = instruction[2]
+	src2 = "0"
 	op_node = op + str(line_number)
-	source_node = source + str(line_number)
-	dest_node = dest + str(line_number)
-	#graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(op_node, op, op_shape))
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(dest_node, dest, reg_shape))
-	graph.write("\"%s\" [label = \"%s\", shape = \"%s\"];\n" %(source_node, source, reg_shape))
-	graph.write("\"%s\" -> \"%s\";\n" %(source_node, dest_node))
-	__add_dest_list__(dest_node, dest)
+	op_nodes.append(op_node)
+	dest_nodes.append(dest)
+	source1.append(src1)
+	source2.append(src2)
 
 def WRUFLAGSI(instruction, line_number, graph):
 	#Set the user level flags to the exclusive or of the Src1 and Imm registers. 
@@ -3300,7 +2389,7 @@ create_shell()
 #town  ->  to
 
 
- #               if find_operator(refined_list, operatorsX86):
+ #               if find_operator(refined_list, operatorsX86)
 						#print refined_list[0]+"  was found in table"
  #                        op_grapher = Opgrapher(refined_list[0])
 						#op_grapher.operators_x86[refined_list[0]]
